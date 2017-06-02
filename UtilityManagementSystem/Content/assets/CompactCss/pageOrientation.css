@@ -1,0 +1,13 @@
+﻿
+@media print
+{
+    @page {size: landscape}
+
+
+    .green{
+        background: #77fe00;
+    }
+    .yellow{
+       background:#fcfe4d;
+    }
+}

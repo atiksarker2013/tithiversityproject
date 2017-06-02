@@ -1,0 +1,55 @@
+﻿@media screen, print {
+	body{
+		
+	}
+	.forstickeronly
+	{
+	    padding-left:30px;
+		padding-top:30px;
+		font-family:Verdana;
+		font-size: 8px;
+		 line-height:8px;
+		 font-weight:bold;
+		
+	}
+	.container{
+		width: 185px;
+		height:94px;
+	}
+	.row-fluid{
+		width: 940px;
+	}
+
+	.doctor-name{
+		color: #1568b3;
+		font-size: 30px;
+		font-weight: 300; letter-spacing:-1px;
+	}
+	.h-underline{
+		width: 100%;
+		border-style:none;
+		border-bottom:2px solid #1568b3 /* 1568b3, 73a3cf */;
+		padding-bottom: 2px;
+	}
+	.footer-pres{
+		border-style:none;
+		border-top:2px dashed #333 /* 1568b3, 73a3cf */;
+		margin-top: 90px;
+		padding-top: 4px;
+	}
+	/* Bootstrap Override */
+	ul.inline > li{
+		display: inline-block;
+		*display: inline;
+		padding-right: 15px;
+		padding-left: 0px;
+		*zoom: 1;
+	}
+	h3 small{
+		font-size:6px;
+		text-transform: uppercase;
+	}
+	h5{
+		font-size: 11px;
+	}
+}

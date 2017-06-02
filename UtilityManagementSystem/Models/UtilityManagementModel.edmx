@@ -1,0 +1,848 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UtilityManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyKey" />
+          </Key>
+          <Property Name="CompanyKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyID" Type="nvarchar(max)" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
+          <Property Name="CompanyAddress" Type="nvarchar(max)" />
+          <Property Name="CompanyPhone" Type="nvarchar(max)" />
+          <Property Name="CompanyMobile" Type="nvarchar(max)" />
+          <Property Name="CompanyEmail" Type="nvarchar(max)" />
+          <Property Name="CompanyWebsite" Type="nvarchar(max)" />
+          <Property Name="CompanyFax" Type="nvarchar(max)" />
+          <Property Name="ContactPersonName" Type="nvarchar(max)" />
+          <Property Name="ContactPersonNo" Type="nvarchar(max)" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="LogoType" Type="varchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="StateCode" Type="int" />
+          <Property Name="CityKey" Type="int" />
+          <Property Name="ZIPKey" Type="bigint" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="ContactEmail" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CompanyForm">
+          <Key>
+            <PropertyRef Name="CompanyFormKey" />
+          </Key>
+          <Property Name="CompanyFormKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormKey" Type="uniqueidentifier" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" />
+          <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="CompanyModule">
+          <Key>
+            <PropertyRef Name="CompanyModuleID" />
+          </Key>
+          <Property Name="CompanyModuleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" />
+          <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FormName" Type="nvarchar(max)" />
+          <Property Name="FormLevel" Type="int" />
+          <Property Name="FormController" Type="nvarchar(max)" />
+          <Property Name="FormView" Type="nvarchar(max)" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleName" Type="nvarchar(max)" />
+          <Property Name="ModuleLevel" Type="int" />
+          <Property Name="NoSub" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="StaffList">
+          <Key>
+            <PropertyRef Name="PersonnelKey" />
+          </Key>
+          <Property Name="PersonnelKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PID" Type="nvarchar(max)" />
+          <Property Name="PName" Type="nvarchar(max)" />
+          <Property Name="Mobile" Type="nvarchar(max)" />
+          <Property Name="Mail" Type="nvarchar(max)" />
+          <Property Name="Designation" Type="nvarchar(max)" />
+          <Property Name="Department" Type="nvarchar(max)" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="PicType" Type="nvarchar(max)" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" />
+          <Property Name="Usergr" Type="uniqueidentifier" />
+          <Property Name="Username" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="IsUser" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="Usergroup">
+          <Key>
+            <PropertyRef Name="UserGroupKey" />
+          </Key>
+          <Property Name="UserGroupKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GroupID" Type="nvarchar(max)" />
+          <Property Name="GroupName" Type="nvarchar(max)" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroupForm">
+          <Key>
+            <PropertyRef Name="UserGroupFormKey" />
+          </Key>
+          <Property Name="UserGroupFormKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserGroupKey" Type="uniqueidentifier" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" />
+          <Property Name="ModuleKey" Type="uniqueidentifier" />
+          <Property Name="FormKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="UserGroupModule">
+          <Key>
+            <PropertyRef Name="UserGroupModuleKey" />
+          </Key>
+          <Property Name="UserGroupModuleKey" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserGroupKey" Type="uniqueidentifier" />
+          <Property Name="CompanyKey" Type="uniqueidentifier" />
+          <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_CompanyForm_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyForm_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="FormKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyForm_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyModule_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="CompanyModule">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyModule_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="CompanyModule">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffList_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="StaffList" Type="Self.StaffList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="StaffList">
+              <PropertyRef Name="Usergr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usergroup_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="Usergroup">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="FormKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="UserGroupKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupModule_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="UserGroupModule" Type="Self.UserGroupModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="UserGroupModule">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupModule_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="UserGroupModule" Type="Self.UserGroupModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="UserGroupModule">
+              <PropertyRef Name="UserGroupKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UtilityManagementDBModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroupModule" EntityType="Self.UserGroupModule" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CompanyForm_Company" Association="Self.FK_CompanyForm_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyForm_Forms" Association="Self.FK_CompanyForm_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyForm_Modules" Association="Self.FK_CompanyForm_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyModule_Company" Association="Self.FK_CompanyModule_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyModule" EntitySet="CompanyModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyModule_Modules" Association="Self.FK_CompanyModule_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="CompanyModule" EntitySet="CompanyModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_Modules" Association="Self.FK_Forms_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="StaffList" EntitySet="StaffList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usergroup_Company" Association="Self.FK_Usergroup_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Usergroup" EntitySet="Usergroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Forms" Association="Self.FK_UserGroupForm_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Modules" Association="Self.FK_UserGroupForm_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Usergroup" Association="Self.FK_UserGroupForm_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupModule_Modules" Association="Self.FK_UserGroupModule_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="UserGroupModule" EntitySet="UserGroupModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupModule_Usergroup" Association="Self.FK_UserGroupModule_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="UserGroupModule" EntitySet="UserGroupModule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UtilityManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyKey" />
+          </Key>
+          <Property Name="CompanyKey" Type="Guid" Nullable="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyMobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyWebsite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyFax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPersonNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LogoType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="StateCode" Type="Int32" />
+          <Property Name="CityKey" Type="Int32" />
+          <Property Name="ZIPKey" Type="Int64" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompanyForm" Relationship="Self.FK_CompanyForm_Company" FromRole="Company" ToRole="CompanyForm" />
+          <NavigationProperty Name="CompanyModule" Relationship="Self.FK_CompanyModule_Company" FromRole="Company" ToRole="CompanyModule" />
+          <NavigationProperty Name="Usergroup" Relationship="Self.FK_Usergroup_Company" FromRole="Company" ToRole="Usergroup" />
+        </EntityType>
+        <EntityType Name="CompanyForm">
+          <Key>
+            <PropertyRef Name="CompanyFormKey" />
+          </Key>
+          <Property Name="CompanyFormKey" Type="Guid" Nullable="false" />
+          <Property Name="FormKey" Type="Guid" />
+          <Property Name="CompanyKey" Type="Guid" />
+          <Property Name="ModuleKey" Type="Guid" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyForm_Company" FromRole="CompanyForm" ToRole="Company" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_CompanyForm_Forms" FromRole="CompanyForm" ToRole="Forms" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_CompanyForm_Modules" FromRole="CompanyForm" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="CompanyModule">
+          <Key>
+            <PropertyRef Name="CompanyModuleID" />
+          </Key>
+          <Property Name="CompanyModuleID" Type="Guid" Nullable="false" />
+          <Property Name="CompanyKey" Type="Guid" />
+          <Property Name="ModuleKey" Type="Guid" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyModule_Company" FromRole="CompanyModule" ToRole="Company" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_CompanyModule_Modules" FromRole="CompanyModule" ToRole="Modules" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="FormID" />
+          </Key>
+          <Property Name="FormID" Type="Guid" Nullable="false" />
+          <Property Name="ModuleID" Type="Guid" Nullable="false" />
+          <Property Name="FormName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormLevel" Type="Int32" />
+          <Property Name="FormController" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormView" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="CompanyForm" Relationship="Self.FK_CompanyForm_Forms" FromRole="Forms" ToRole="CompanyForm" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_Forms_Modules" FromRole="Forms" ToRole="Modules" />
+          <NavigationProperty Name="UserGroupForm" Relationship="Self.FK_UserGroupForm_Forms" FromRole="Forms" ToRole="UserGroupForm" />
+        </EntityType>
+        <EntityType Name="Modules">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Guid" Nullable="false" />
+          <Property Name="ModuleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModuleLevel" Type="Int32" />
+          <Property Name="NoSub" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="CompanyForm" Relationship="Self.FK_CompanyForm_Modules" FromRole="Modules" ToRole="CompanyForm" />
+          <NavigationProperty Name="CompanyModule" Relationship="Self.FK_CompanyModule_Modules" FromRole="Modules" ToRole="CompanyModule" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_Forms_Modules" FromRole="Modules" ToRole="Forms" />
+          <NavigationProperty Name="UserGroupForm" Relationship="Self.FK_UserGroupForm_Modules" FromRole="Modules" ToRole="UserGroupForm" />
+          <NavigationProperty Name="UserGroupModule" Relationship="Self.FK_UserGroupModule_Modules" FromRole="Modules" ToRole="UserGroupModule" />
+        </EntityType>
+        <EntityType Name="StaffList">
+          <Key>
+            <PropertyRef Name="PersonnelKey" />
+          </Key>
+          <Property Name="PersonnelKey" Type="Guid" Nullable="false" />
+          <Property Name="PID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PicType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyKey" Type="Guid" />
+          <Property Name="Usergr" Type="Guid" />
+          <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsUser" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <NavigationProperty Name="Usergroup" Relationship="Self.FK_StaffList_Usergroup" FromRole="StaffList" ToRole="Usergroup" />
+        </EntityType>
+        <EntityType Name="Usergroup">
+          <Key>
+            <PropertyRef Name="UserGroupKey" />
+          </Key>
+          <Property Name="UserGroupKey" Type="Guid" Nullable="false" />
+          <Property Name="GroupID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyKey" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Usergroup_Company" FromRole="Usergroup" ToRole="Company" />
+          <NavigationProperty Name="StaffList" Relationship="Self.FK_StaffList_Usergroup" FromRole="Usergroup" ToRole="StaffList" />
+          <NavigationProperty Name="UserGroupForm" Relationship="Self.FK_UserGroupForm_Usergroup" FromRole="Usergroup" ToRole="UserGroupForm" />
+          <NavigationProperty Name="UserGroupModule" Relationship="Self.FK_UserGroupModule_Usergroup" FromRole="Usergroup" ToRole="UserGroupModule" />
+        </EntityType>
+        <EntityType Name="UserGroupForm">
+          <Key>
+            <PropertyRef Name="UserGroupFormKey" />
+          </Key>
+          <Property Name="UserGroupFormKey" Type="Guid" Nullable="false" />
+          <Property Name="UserGroupKey" Type="Guid" />
+          <Property Name="CompanyKey" Type="Guid" />
+          <Property Name="ModuleKey" Type="Guid" />
+          <Property Name="FormKey" Type="Guid" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_UserGroupForm_Forms" FromRole="UserGroupForm" ToRole="Forms" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_UserGroupForm_Modules" FromRole="UserGroupForm" ToRole="Modules" />
+          <NavigationProperty Name="Usergroup" Relationship="Self.FK_UserGroupForm_Usergroup" FromRole="UserGroupForm" ToRole="Usergroup" />
+        </EntityType>
+        <EntityType Name="UserGroupModule">
+          <Key>
+            <PropertyRef Name="UserGroupModuleKey" />
+          </Key>
+          <Property Name="UserGroupModuleKey" Type="Guid" Nullable="false" />
+          <Property Name="UserGroupKey" Type="Guid" />
+          <Property Name="CompanyKey" Type="Guid" />
+          <Property Name="ModuleKey" Type="Guid" />
+          <NavigationProperty Name="Modules" Relationship="Self.FK_UserGroupModule_Modules" FromRole="UserGroupModule" ToRole="Modules" />
+          <NavigationProperty Name="Usergroup" Relationship="Self.FK_UserGroupModule_Usergroup" FromRole="UserGroupModule" ToRole="Usergroup" />
+        </EntityType>
+        <Association Name="FK_CompanyForm_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyModule_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="CompanyModule">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usergroup_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyKey" />
+            </Principal>
+            <Dependent Role="Usergroup">
+              <PropertyRef Name="CompanyKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyForm_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="FormKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyForm_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="CompanyForm" Type="Self.CompanyForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="CompanyForm">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyModule_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="CompanyModule" Type="Self.CompanyModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="CompanyModule">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Forms_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Forms">
+          <End Role="Forms" Type="Self.Forms" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Forms">
+              <PropertyRef Name="FormID" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="FormKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupModule_Modules">
+          <End Role="Modules" Type="Self.Modules" Multiplicity="0..1" />
+          <End Role="UserGroupModule" Type="Self.UserGroupModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modules">
+              <PropertyRef Name="ModuleID" />
+            </Principal>
+            <Dependent Role="UserGroupModule">
+              <PropertyRef Name="ModuleKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffList_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="StaffList" Type="Self.StaffList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="StaffList">
+              <PropertyRef Name="Usergr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupForm_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="UserGroupForm" Type="Self.UserGroupForm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="UserGroupForm">
+              <PropertyRef Name="UserGroupKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGroupModule_Usergroup">
+          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
+          <End Role="UserGroupModule" Type="Self.UserGroupModule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usergroup">
+              <PropertyRef Name="UserGroupKey" />
+            </Principal>
+            <Dependent Role="UserGroupModule">
+              <PropertyRef Name="UserGroupKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UtilityManagementDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" />
+          <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" />
+          <EntitySet Name="Modules" EntityType="Self.Modules" />
+          <EntitySet Name="StaffList" EntityType="Self.StaffList" />
+          <EntitySet Name="Usergroup" EntityType="Self.Usergroup" />
+          <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" />
+          <EntitySet Name="UserGroupModule" EntityType="Self.UserGroupModule" />
+          <AssociationSet Name="FK_CompanyForm_Company" Association="Self.FK_CompanyForm_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyModule_Company" Association="Self.FK_CompanyModule_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyModule" EntitySet="CompanyModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usergroup_Company" Association="Self.FK_Usergroup_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Usergroup" EntitySet="Usergroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyForm_Forms" Association="Self.FK_CompanyForm_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyForm_Modules" Association="Self.FK_CompanyForm_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="CompanyForm" EntitySet="CompanyForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyModule_Modules" Association="Self.FK_CompanyModule_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="CompanyModule" EntitySet="CompanyModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Forms_Modules" Association="Self.FK_Forms_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Forms" Association="Self.FK_UserGroupForm_Forms">
+            <End Role="Forms" EntitySet="Forms" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Modules" Association="Self.FK_UserGroupForm_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupModule_Modules" Association="Self.FK_UserGroupModule_Modules">
+            <End Role="Modules" EntitySet="Modules" />
+            <End Role="UserGroupModule" EntitySet="UserGroupModule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="StaffList" EntitySet="StaffList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupForm_Usergroup" Association="Self.FK_UserGroupForm_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="UserGroupForm" EntitySet="UserGroupForm" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGroupModule_Usergroup" Association="Self.FK_UserGroupModule_Usergroup">
+            <End Role="Usergroup" EntitySet="Usergroup" />
+            <End Role="UserGroupModule" EntitySet="UserGroupModule" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UtilityManagementDBModelStoreContainer" CdmEntityContainer="UtilityManagementDBEntities">
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
+                <ScalarProperty Name="CompanyMobile" ColumnName="CompanyMobile" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
+                <ScalarProperty Name="CompanyFax" ColumnName="CompanyFax" />
+                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+                <ScalarProperty Name="ContactPersonNo" ColumnName="ContactPersonNo" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="LogoType" ColumnName="LogoType" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="CityKey" ColumnName="CityKey" />
+                <ScalarProperty Name="ZIPKey" ColumnName="ZIPKey" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyForm">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.CompanyForm">
+              <MappingFragment StoreEntitySet="CompanyForm">
+                <ScalarProperty Name="CompanyFormKey" ColumnName="CompanyFormKey" />
+                <ScalarProperty Name="FormKey" ColumnName="FormKey" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyModule">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.CompanyModule">
+              <MappingFragment StoreEntitySet="CompanyModule">
+                <ScalarProperty Name="CompanyModuleID" ColumnName="CompanyModuleID" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Forms">
+              <MappingFragment StoreEntitySet="Forms">
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="FormLevel" ColumnName="FormLevel" />
+                <ScalarProperty Name="FormController" ColumnName="FormController" />
+                <ScalarProperty Name="FormView" ColumnName="FormView" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modules">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Modules">
+              <MappingFragment StoreEntitySet="Modules">
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="ModuleLevel" ColumnName="ModuleLevel" />
+                <ScalarProperty Name="NoSub" ColumnName="NoSub" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffList">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.StaffList">
+              <MappingFragment StoreEntitySet="StaffList">
+                <ScalarProperty Name="PersonnelKey" ColumnName="PersonnelKey" />
+                <ScalarProperty Name="PID" ColumnName="PID" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="PicType" ColumnName="PicType" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="Usergr" ColumnName="Usergr" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsUser" ColumnName="IsUser" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usergroup">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Usergroup">
+              <MappingFragment StoreEntitySet="Usergroup">
+                <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroupForm">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.UserGroupForm">
+              <MappingFragment StoreEntitySet="UserGroupForm">
+                <ScalarProperty Name="UserGroupFormKey" ColumnName="UserGroupFormKey" />
+                <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+                <ScalarProperty Name="FormKey" ColumnName="FormKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroupModule">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.UserGroupModule">
+              <MappingFragment StoreEntitySet="UserGroupModule">
+                <ScalarProperty Name="UserGroupModuleKey" ColumnName="UserGroupModuleKey" />
+                <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
+                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
+                <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

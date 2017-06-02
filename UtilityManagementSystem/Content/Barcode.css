@@ -1,0 +1,92 @@
+﻿
+
+@media screen, print {
+	body{
+		background:white; color:black;
+        margin:0 !important;
+        margin-left: 0px !important;
+        font-family: "Arial", Helvetica, Arial, sans-serif;
+        font-size:7pt !important;
+
+	}
+	@media print {
+  .no-print {
+    display: none;
+  }
+	.divwithroundedCorner
+	{
+	    font-size: 16px;
+	    padding-left: 10px;
+	     padding-right: 10px;
+		padding-top: 4px;
+		padding-bottom:5px;
+		-webkit-border-radius: 15px;
+		-moz-border-radius: 15px;
+		border-radius: 15px;
+		border:4px solid #345185;
+		background-color:#BAC8E3;
+		width:400px;
+	}
+	.divwithwhiteBGCorner
+	{
+
+	    padding-left: 7px;
+	     padding-right: 4px;
+		padding-top: 10px;
+		padding-bottom:10px;
+		-webkit-border-radius: 30px;
+		-moz-border-radius: 30px;
+		border-radius: 30px;
+		border:4px solid #345185;
+		background-color:#FFFFFF;
+
+	}
+	.divpadding
+	{
+        font:small-caption 8px arial, verdana;
+	   border:2px solid #000000 ;
+		padding-top: 10px;
+		padding-bottom:20px;
+       float:left;
+	}
+	.container{
+		width: 980px;
+	}
+	.row-fluid{
+		width: 940px;
+	}
+
+	.doctor-name{
+		color: #1568b3;
+		font-size: 30px;
+		font-weight: 300; letter-spacing:-1px;
+	}
+	.h-underline{
+		width: 100%;
+		border-style:none;
+		border-bottom:2px solid #1568b3 /* 1568b3, 73a3cf */;
+		padding-bottom: 4px;
+	}
+	.footer-pres{
+		border-style:none;
+		border-top:2px dashed #333 /* 1568b3, 73a3cf */;
+		margin-top: 90px;
+		padding-top: 4px;
+	}
+	/* Bootstrap Override */
+	ul.inline > li{
+		display: inline-block;
+		*display: inline;
+		padding-right: 15px;
+		padding-left: 0px;
+		*zoom: 1;
+	}
+	h3 small{
+		font-size:11px;
+		text-transform: uppercase;
+	}
+	h5{
+		font-size: 15px;
+	}
+}
+    
