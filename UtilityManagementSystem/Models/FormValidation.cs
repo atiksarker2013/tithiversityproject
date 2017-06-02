@@ -9,6 +9,7 @@ namespace UtilityManagementSystem.Models
     {
         private UtilityManagementDBEntities db = new UtilityManagementDBEntities();
         public CompanyClass FillCompanyInfo(Company model)
+
         {
             UtilityManagementDBEntities bc = new UtilityManagementDBEntities();
             CompanyClass obj = new CompanyClass();
