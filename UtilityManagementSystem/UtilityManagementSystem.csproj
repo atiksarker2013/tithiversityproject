@@ -155,24 +155,32 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Company.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyClass.cs" />
     <Compile Include="Models\CompanyForm.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CompanyModule.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataReturn.cs" />
     <Compile Include="Models\Forms.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FormValidation.cs" />
+    <Compile Include="Models\GlobalClass.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Modules.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StaffClass.cs" />
     <Compile Include="Models\StaffList.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UniqueIDCreator.cs" />
     <Compile Include="Models\Usergroup.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
