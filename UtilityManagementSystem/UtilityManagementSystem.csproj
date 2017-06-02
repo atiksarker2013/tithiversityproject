@@ -151,7 +151,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssignAccessController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Controllers\UsergrpController.cs" />
+    <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -290,6 +295,11 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\themes\" />
     <Folder Include="Printingcss\" />
+    <Folder Include="Views\AssignAccess\" />
+    <Folder Include="Views\Companies\" />
+    <Folder Include="Views\Staff\" />
+    <Folder Include="Views\Usergrp\" />
+    <Folder Include="Views\UserHome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
