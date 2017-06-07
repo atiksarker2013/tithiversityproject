@@ -285,6 +285,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\UserHome\Login.cshtml" />
+    <Content Include="Views\UserHome\Index.cshtml" />
+    <Content Include="Views\UserHome\Logout.cshtml" />
+    <Content Include="Views\Staff\MyProfile.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\AssignAccess\ChangePass.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,11 +301,8 @@
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\themes\" />
     <Folder Include="Printingcss\" />
-    <Folder Include="Views\AssignAccess\" />
     <Folder Include="Views\Companies\" />
-    <Folder Include="Views\Staff\" />
     <Folder Include="Views\Usergrp\" />
-    <Folder Include="Views\UserHome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

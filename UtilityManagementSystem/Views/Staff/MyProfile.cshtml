@@ -1,0 +1,42 @@
+﻿@model UtilityManagementSystem.Models.StaffList
+
+@{
+    ViewBag.Title = "StaffList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using UtilityManagementSystem.Models
+@{
+    UtilityManagementDBEntities db = new UtilityManagementDBEntities();
+
+}
+
+<div class="row">
+    <div class="panel panel-success">
+        <div class="panel-heading">Employee Details</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <img src="@Url.Action("GetUserPic", "ShowImage" ,new{id=Model.PersonnelKey})" width="50px" height="80px" alt="User Image" /><br />
+                <table class="table">
+                    <tr><th>ID</th><td>@Html.DisplayFor(m => m.PID)</td></tr>
+                    <tr><th>Name</th><td>@Html.DisplayFor(m => m.PName)</td></tr>
+                    <tr><th>Mobile#</th><td>@Html.DisplayFor(m => m.Mobile)</td></tr>
+                    <tr><th>Email</th><td>@Html.DisplayFor(m => m.Mail)</td></tr>
+                    <tr><th>Department</th><td>@Html.DisplayFor(m => m.Department)</td></tr>
+                    <tr><th>Designation</th><td>@Html.DisplayFor(m => m.Designation)</td></tr>
+
+
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table">
+
+                    @*<tr><th>Usergroup</th><td>@Html.DisplayFor(m => m.Usergroup.GroupName)</td></tr>*@
+                    <tr><th>Username</th><td>@Html.DisplayFor(m => m.Username)</td></tr>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

@@ -3,40 +3,182 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - RCS</title>
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+    @*<script type="text/javascript">
+              $(document).ready(function () {
+                  var temp = "";
+                  var asd = location.pathname;
+
+                  $('li.active active-menu').removeClass('active active-menu');
+                  $('a[href="' + asd + '"]').closest('li').addClass('active active-menu');
+
+                  $('a[href="' + asd + '"]').closest('ul.nav-second-level').addClass('collapse in');
+              });
+        function preventBack(){window.history.forward();}
+        setTimeout("preventBack()", 0);
+        window.onunload=function(){null};
+          </script>*@
+</head>
+@*@using Hasan.App.Controllers*@
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="@Url.Action("Index", "tbl_Rx")">
+
+                    Hasan Chember                    @*<center><img src="~/Content/ss_logo_small.png" height="50px" /></center>*@
+                </a>
+            </div>
+
+            <div class="notifications-wrapper">
+                <ul class="nav">
+                    <li><div style="padding-left:400px;"></div></li>
+
+                    <li style="float:right;" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="glyphicon glyphicon-cog"></i> User <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="@Url.Action("MyProfile","Staff")"><i class="fa fa-user-plus"></i> My Profile</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ChangePass","AssignAccess")"><i class="fa fa-user-plus"></i> Change Password</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="@Url.Action("Logout","UserHome")"><i class="fa fa-sign-out"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </li>
+                    @*<li style="float:right;"><a href="@Url.Action("Create","MajorArea")"><i class="glyphicon fa fa-user-plus"></i>Major Area</a></li>
+
+                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Investigation")"><i class="glyphicon fa fa-user-plus"></i>Investigation</a></li>
+
+                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Drop")"><i class="glyphicon fa fa-user-plus"></i>Drop</a></li>
+
+                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Drug")"><i class="glyphicon fa fa-user-plus"></i>Drug</a></li>
+
+                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Patient")"><i class="glyphicon fa fa-user-plus"></i>Patient</a></li>
+
+                    <li style="float:right;"><a href="@Url.Action("Create","Rx")"><i class="glyphicon fa fa-user-plus"></i>Rx</a></li>*@
+
+                </ul>
+
+            </div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <div id="menu">
+            <nav class="navbar-default navbar-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+
+
+                        <li class="me">
+                            <a href="@Url.Action("Index", "tbl_Rx")"><i class="fa fa-dashboard "></i>Dashboard</a>
+                        </li>
+
+                        @*<li class="me">
+                            <a href="@Url.Action("Index", "tbl_Patient")"><i class="fa fa-dashboard "></i>Patient</a>
+                        </li>
+                        <li class="me">
+                            <a href="@Url.Action("Index", "tbl_Drug")"><i class="fa fa-dashboard "></i>Drug</a>
+                        </li>
+                        <li class="me">
+                            <a href="@Url.Action("Index", "tbl_Drop")"><i class="fa fa-dashboard "></i>Drop</a>
+                        </li>
+                        <li class="me">
+                            <a href="@Url.Action("Index", "tbl_Investigation")"><i class="fa fa-dashboard "></i>Investigation</a>
+                        </li>
+                        <li class="me">
+                            <a href="@Url.Action("Index", "MajorArea")"><i class="fa fa-dashboard "></i>Major Area</a>
+                        </li>
+                        <li class="me">
+                            <a href="@Url.Action("Index", "tbl_VisualAcuityType")"><i class="fa fa-dashboard "></i>Visual Acuity</a>
+                        </li>*@
+                        @{
+//BrightFutureHoustoneEntities db = new BrightFutureHoustoneEntities();
+
+//var SeMod = from x in db.UserGroupModule where x.Modules.IsDelete == false && x.UserGroupKey == GlobalClass.LoginUser.Usergr && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
+//SeMod = SeMod.OrderBy(m => m.Modules.ModuleLevel);
+                        }
+
+
+
+
+                        @*@foreach (var item in SeMod)
+                            {
+                                var form = from x in db.UserGroupForm where x.UserGroupKey == GlobalClass.LoginUser.Usergr && x.ModuleKey == item.ModuleKey && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
+                                form = form.OrderBy(m => m.Forms.FormLevel);
+                                if (form.Count() == 1)
+                                {
+                                    foreach (var fItem in form)
+                                    {
+                                        <li class="me">
+                                            <a href="@Url.Action(fItem.Forms.FormView, fItem.Forms.FormController)"><i class="fa fa-cogs "></i>@Html.DisplayFor(model => fItem.Forms.FormName)</a>
+                                        </li>
+                                    }
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="#"><i class="fa fa-sitemap "></i>@Html.DisplayFor(modelItem => item.Modules.ModuleName) <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            @foreach (var fItem in form)
+                                            {
+                                                <li class="me">
+                                                    <a href="@Url.Action(fItem.Forms.FormView, fItem.Forms.FormController)"><i class="fa fa-cogs "></i>@Html.DisplayFor(model => fItem.Forms.FormName)</a>
+                                                </li>
+                                            }
+
+                                        </ul>
+                                    </li>
+                                }
+
+                            }*@
+
+
+
+                    </ul>
+                </div>
+
+            </nav>
+
+        </div>
+        <!-- /. SIDEBAR MENU (navbar-side) -->
+        <div id="page-wrapper" class="page-wrapper-cls">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="page-head-line">@RenderSection("PageHeader", required: false)</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                        @RenderSection("scripts", required: false)
+                    </div>
+                </div>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <footer>
+        <img src="~/Content/ss_logo_small.png" height="70px" />  Developed by Suresoft Technology Ltd
+    </footer>
+
+
+
 </body>
 </html>
