@@ -228,6 +228,7 @@
     <Content Include="Content\ntr.png" />
     <Content Include="Content\samples.css" />
     <Content Include="Content\ss_logo_small.png" />
+    <Content Include="DataBase Script\1.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
