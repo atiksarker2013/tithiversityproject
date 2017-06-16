@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc34f3658007497f9b1d99e611064162" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="bc34f3658007497f9b1d99e611064162" Name="Diagram1" ZoomLevel="62">
         <EntityTypeShape EntityType="UtilityManagementDBModel.Company" Width="1.5" PointX="1.5" PointY="18.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.CompanyForm" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.CompanyModule" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
@@ -27,6 +27,8 @@
         <AssociationConnector Association="UtilityManagementDBModel.FK_StaffList_Usergroup" ManuallyRouted="false" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupForm_Usergroup" ManuallyRouted="false" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupModule_Usergroup" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.Customer" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.Vendor" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

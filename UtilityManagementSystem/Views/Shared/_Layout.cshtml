@@ -11,20 +11,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
 
-    @*<script type="text/javascript">
-              $(document).ready(function () {
-                  var temp = "";
-                  var asd = location.pathname;
-
-                  $('li.active active-menu').removeClass('active active-menu');
-                  $('a[href="' + asd + '"]').closest('li').addClass('active active-menu');
-
-                  $('a[href="' + asd + '"]').closest('ul.nav-second-level').addClass('collapse in');
-              });
-        function preventBack(){window.history.forward();}
-        setTimeout("preventBack()", 0);
-        window.onunload=function(){null};
-          </script>*@
+    
 </head>
 @*@using Hasan.App.Controllers*@
 <body>
@@ -34,7 +21,7 @@
 
                 <a class="navbar-brand" href="@Url.Action("Index", "tbl_Rx")">
 
-                  RCS                   @*<center><img src="~/Content/ss_logo_small.png" height="50px" /></center>*@
+                  Utility Service                   @*<center><img src="~/Content/ss_logo_small.png" height="50px" /></center>*@
                 </a>
             </div>
 
@@ -47,29 +34,19 @@
                             <i class="glyphicon glyphicon-cog"></i> User <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li>
+                            @*<li>
                                 <a href="@Url.Action("MyProfile","Staff")"><i class="fa fa-user-plus"></i> My Profile</a>
                             </li>
                             <li>
                                 <a href="@Url.Action("ChangePass","AssignAccess")"><i class="fa fa-user-plus"></i> Change Password</a>
-                            </li>
+                            </li>*@
                             <li class="divider"></li>
                             <li>
                                 <a href="@Url.Action("Logout","UserHome")"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
-                    @*<li style="float:right;"><a href="@Url.Action("Create","MajorArea")"><i class="glyphicon fa fa-user-plus"></i>Major Area</a></li>
-
-                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Investigation")"><i class="glyphicon fa fa-user-plus"></i>Investigation</a></li>
-
-                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Drop")"><i class="glyphicon fa fa-user-plus"></i>Drop</a></li>
-
-                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Drug")"><i class="glyphicon fa fa-user-plus"></i>Drug</a></li>
-
-                    <li style="float:right;"><a href="@Url.Action("Create","tbl_Patient")"><i class="glyphicon fa fa-user-plus"></i>Patient</a></li>
-
-                    <li style="float:right;"><a href="@Url.Action("Create","Rx")"><i class="glyphicon fa fa-user-plus"></i>Rx</a></li>*@
+                    
 
                 </ul>
 
@@ -83,67 +60,14 @@
 
 
                         <li class="me">
-                            <a href="@Url.Action("Index", "tbl_Rx")"><i class="fa fa-dashboard "></i>Dashboard</a>
+                            <a href="@Url.Action("Index", "Vendors")"><i class="fa fa-dashboard "></i>Vendor</a>
                         </li>
 
-                        @*<li class="me">
-                            <a href="@Url.Action("Index", "tbl_Patient")"><i class="fa fa-dashboard "></i>Patient</a>
-                        </li>
                         <li class="me">
-                            <a href="@Url.Action("Index", "tbl_Drug")"><i class="fa fa-dashboard "></i>Drug</a>
+                            <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
                         </li>
-                        <li class="me">
-                            <a href="@Url.Action("Index", "tbl_Drop")"><i class="fa fa-dashboard "></i>Drop</a>
-                        </li>
-                        <li class="me">
-                            <a href="@Url.Action("Index", "tbl_Investigation")"><i class="fa fa-dashboard "></i>Investigation</a>
-                        </li>
-                        <li class="me">
-                            <a href="@Url.Action("Index", "MajorArea")"><i class="fa fa-dashboard "></i>Major Area</a>
-                        </li>
-                        <li class="me">
-                            <a href="@Url.Action("Index", "tbl_VisualAcuityType")"><i class="fa fa-dashboard "></i>Visual Acuity</a>
-                        </li>*@
-                        @{
-//BrightFutureHoustoneEntities db = new BrightFutureHoustoneEntities();
-
-//var SeMod = from x in db.UserGroupModule where x.Modules.IsDelete == false && x.UserGroupKey == GlobalClass.LoginUser.Usergr && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
-//SeMod = SeMod.OrderBy(m => m.Modules.ModuleLevel);
-                        }
-
-
-
-
-                        @*@foreach (var item in SeMod)
-                            {
-                                var form = from x in db.UserGroupForm where x.UserGroupKey == GlobalClass.LoginUser.Usergr && x.ModuleKey == item.ModuleKey && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
-                                form = form.OrderBy(m => m.Forms.FormLevel);
-                                if (form.Count() == 1)
-                                {
-                                    foreach (var fItem in form)
-                                    {
-                                        <li class="me">
-                                            <a href="@Url.Action(fItem.Forms.FormView, fItem.Forms.FormController)"><i class="fa fa-cogs "></i>@Html.DisplayFor(model => fItem.Forms.FormName)</a>
-                                        </li>
-                                    }
-                                }
-                                else
-                                {
-                                    <li>
-                                        <a href="#"><i class="fa fa-sitemap "></i>@Html.DisplayFor(modelItem => item.Modules.ModuleName) <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-second-level">
-                                            @foreach (var fItem in form)
-                                            {
-                                                <li class="me">
-                                                    <a href="@Url.Action(fItem.Forms.FormView, fItem.Forms.FormController)"><i class="fa fa-cogs "></i>@Html.DisplayFor(model => fItem.Forms.FormName)</a>
-                                                </li>
-                                            }
-
-                                        </ul>
-                                    </li>
-                                }
-
-                            }*@
+                        
+                      
 
 
 
@@ -175,7 +99,8 @@
     </div>
     <!-- /. WRAPPER  -->
     <footer>
-        <img src="~/Content/ss_logo_small.png" height="70px" />  Developed by Suresoft Technology Ltd
+        @*<img src="~/Content/ss_logo_small.png" height="70px" />*@ 
+         Developed by Husna Afrin
     </footer>
 
 

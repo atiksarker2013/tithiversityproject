@@ -44,8 +44,6 @@ namespace UtilityManagementSystem.Controllers
                     GlobalClass.LoginUser = obj;
 
                     GlobalClass.Company = db.Company.SingleOrDefault(m => m.CompanyKey == obj.CompanyKey);
-                    //GlobalClass.Company = db.Company.FirstOrDefault();
-                    //GlobalClass.Warehouse = db.Warhouse.FirstOrDefault();
                     GlobalClass.SystemSession = true;
                     return RedirectToAction("Index", "UserHome");
                 }

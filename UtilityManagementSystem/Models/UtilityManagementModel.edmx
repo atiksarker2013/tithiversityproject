@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UtilityManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UtilityManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Company">
           <Key>
             <PropertyRef Name="CompanyKey" />
@@ -45,6 +45,16 @@
           <Property Name="CompanyModuleID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CompanyKey" Type="uniqueidentifier" />
           <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Forms">
           <Key>
@@ -115,6 +125,18 @@
           <Property Name="UserGroupKey" Type="uniqueidentifier" />
           <Property Name="CompanyKey" Type="uniqueidentifier" />
           <Property Name="ModuleKey" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="TradeLisenceNumber" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_CompanyForm_Company">
           <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
@@ -276,12 +298,14 @@
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupForm" EntityType="Self.UserGroupForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroupModule" EntityType="Self.UserGroupModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CompanyForm_Company" Association="Self.FK_CompanyForm_Company">
             <End Role="Company" EntitySet="Company" />
             <End Role="CompanyForm" EntitySet="CompanyForm" />
@@ -335,8 +359,7 @@
             <End Role="UserGroupModule" EntitySet="UserGroupModule" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UtilityManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -695,7 +718,31 @@
             <End Role="Usergroup" EntitySet="Usergroup" />
             <End Role="UserGroupModule" EntitySet="UserGroupModule" />
           </AssociationSet>
+          <EntitySet Name="Customer" EntityType="UtilityManagementDBModel.Customer" />
+          <EntitySet Name="Vendor" EntityType="UtilityManagementDBModel.Vendor" />
         </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TradeLisenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -819,6 +866,30 @@
                 <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
                 <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
                 <ScalarProperty Name="ModuleKey" ColumnName="ModuleKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendor">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="TradeLisenceNumber" ColumnName="TradeLisenceNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

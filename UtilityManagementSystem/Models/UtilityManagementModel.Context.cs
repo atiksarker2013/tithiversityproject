@@ -34,5 +34,7 @@ namespace UtilityManagementSystem.Models
         public virtual DbSet<Usergroup> Usergroup { get; set; }
         public virtual DbSet<UserGroupForm> UserGroupForm { get; set; }
         public virtual DbSet<UserGroupModule> UserGroupModule { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Vendor> Vendor { get; set; }
     }
 }
