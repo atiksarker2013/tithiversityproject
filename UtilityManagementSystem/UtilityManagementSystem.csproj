@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UsergrpController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
@@ -184,6 +185,9 @@
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Modules.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceType.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffClass.cs" />
@@ -379,6 +383,7 @@
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
     <Content Include="DataBase Script\1.sql" />
     <Content Include="DataBase Script\2.sql" />
+    <Content Include="DataBase Script\3.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -542,6 +547,11 @@
     <Content Include="Views\Vendors\Details.cshtml" />
     <Content Include="Views\Vendors\Edit.cshtml" />
     <Content Include="Views\Vendors\Index.cshtml" />
+    <Content Include="Views\ServiceTypes\Create.cshtml" />
+    <Content Include="Views\ServiceTypes\Delete.cshtml" />
+    <Content Include="Views\ServiceTypes\Details.cshtml" />
+    <Content Include="Views\ServiceTypes\Edit.cshtml" />
+    <Content Include="Views\ServiceTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

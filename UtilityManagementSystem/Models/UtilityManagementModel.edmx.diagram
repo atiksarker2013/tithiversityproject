@@ -29,6 +29,7 @@
         <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupModule_Usergroup" ManuallyRouted="false" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Customer" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Vendor" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.ServiceType" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

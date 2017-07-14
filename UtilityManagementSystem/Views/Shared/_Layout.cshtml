@@ -34,12 +34,7 @@
                             <i class="glyphicon glyphicon-cog"></i> User <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            @*<li>
-                                <a href="@Url.Action("MyProfile","Staff")"><i class="fa fa-user-plus"></i> My Profile</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("ChangePass","AssignAccess")"><i class="fa fa-user-plus"></i> Change Password</a>
-                            </li>*@
+                          
                             <li class="divider"></li>
                             <li>
                                 <a href="@Url.Action("Logout","UserHome")"><i class="fa fa-sign-out"></i> Logout</a>
@@ -65,6 +60,10 @@
 
                         <li class="me">
                             <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
+                        </li>
+
+                        <li class="me">
+                            <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
                         </li>
                         
                       
