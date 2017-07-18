@@ -13,7 +13,7 @@
 
     
 </head>
-@*@using Hasan.App.Controllers*@
+ 
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -21,7 +21,7 @@
 
                 <a class="navbar-brand" href="@Url.Action("Index", "tbl_Rx")">
 
-                  Utility Service                   @*<center><img src="~/Content/ss_logo_small.png" height="50px" /></center>*@
+                  Utility Service                  
                 </a>
             </div>
 
@@ -65,10 +65,17 @@
                         <li class="me">
                             <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
                         </li>
+
+                        <li class="me">
+                            <a href="@Url.Action("Index", "JobStatus")"><i class="fa fa-dashboard "></i>Job Status</a>
+                        </li>
                         
+                        <li class="me">
+                            <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
+                        </li>
                       
 
-
+                        
 
                     </ul>
                 </div>

@@ -1,0 +1,113 @@
+﻿@model UtilityManagementSystem.Models.CustomerJobRequest
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CustomerJobRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerBudget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerBudget)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnScheduleDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnScheduleDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobStatus.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobStatus.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceType.ServiceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceType.ServiceName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -12,16 +12,16 @@ namespace UtilityManagementSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ServiceType
+    public partial class JobStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ServiceType()
+        public JobStatus()
         {
             this.CustomerJobRequest = new HashSet<CustomerJobRequest>();
         }
     
         public int Id { get; set; }
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerJobRequest> CustomerJobRequest { get; set; }

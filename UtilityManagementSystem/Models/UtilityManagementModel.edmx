@@ -56,6 +56,23 @@
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CustomerJobRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="varchar(max)" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="Contact" Type="varchar(max)" />
+          <Property Name="ServiceAddress" Type="varchar(max)" />
+          <Property Name="ServiceTypeId" Type="int" />
+          <Property Name="ServiceDetails" Type="varchar(max)" />
+          <Property Name="CustomerBudget" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="ScheduleDate" Type="datetime" />
+          <Property Name="ReturnScheduleDate" Type="datetime" />
+          <Property Name="JobStatusId" Type="int" />
+        </EntityType>
         <EntityType Name="Forms">
           <Key>
             <PropertyRef Name="FormID" />
@@ -67,6 +84,13 @@
           <Property Name="FormController" Type="nvarchar(max)" />
           <Property Name="FormView" Type="nvarchar(max)" />
           <Property Name="IsDelete" Type="bit" />
+        </EntityType>
+        <EntityType Name="JobStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Modules">
           <Key>
@@ -205,6 +229,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CustomerJobRequest_JobStatus">
+          <End Role="JobStatus" Type="Self.JobStatus" Multiplicity="0..1" />
+          <End Role="CustomerJobRequest" Type="Self.CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="JobStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Forms_Modules">
           <End Role="Modules" Type="Self.Modules" Multiplicity="1" />
           <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
@@ -214,6 +250,30 @@
             </Principal>
             <Dependent Role="Forms">
               <PropertyRef Name="ModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerJobRequest" Type="Self.CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_ServiceType">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+          <End Role="CustomerJobRequest" Type="Self.CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="ServiceTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -306,7 +366,9 @@
           <EntitySet Name="CompanyForm" EntityType="Self.CompanyForm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyModule" EntityType="Self.CompanyModule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerJobRequest" EntityType="Self.CustomerJobRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobStatus" EntityType="Self.JobStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modules" EntityType="Self.Modules" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
@@ -334,9 +396,21 @@
             <End Role="Modules" EntitySet="Modules" />
             <End Role="CompanyModule" EntitySet="CompanyModule" />
           </AssociationSet>
+          <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="Self.FK_CustomerJobRequest_JobStatus">
+            <End Role="JobStatus" EntitySet="JobStatus" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
+          </AssociationSet>
           <AssociationSet Name="FK_Forms_Modules" Association="Self.FK_Forms_Modules">
             <End Role="Modules" EntitySet="Modules" />
             <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Customer" Association="Self.FK_Job_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_ServiceType" Association="Self.FK_Job_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
             <End Role="Usergroup" EntitySet="Usergroup" />
@@ -729,7 +803,21 @@
           <EntitySet Name="Customer" EntityType="UtilityManagementDBModel.Customer" />
           <EntitySet Name="Vendor" EntityType="UtilityManagementDBModel.Vendor" />
           <EntitySet Name="ServiceType" EntityType="UtilityManagementDBModel.ServiceType" />
-        </EntityContainer>
+          <EntitySet Name="CustomerJobRequest" EntityType="UtilityManagementDBModel.CustomerJobRequest" />
+          <EntitySet Name="JobStatus" EntityType="UtilityManagementDBModel.JobStatus" />
+          <AssociationSet Name="FK_Job_Customer" Association="UtilityManagementDBModel.FK_Job_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus">
+            <End Role="JobStatus" EntitySet="JobStatus" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_ServiceType" Association="UtilityManagementDBModel.FK_Job_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -739,6 +827,7 @@
           <Property Name="Mobile" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_Customer" FromRole="Customer" ToRole="CustomerJobRequest" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -758,8 +847,73 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_ServiceType" FromRole="ServiceType" ToRole="CustomerJobRequest" />
         </EntityType>
-      </Schema>
+        <EntityType Name="CustomerJobRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="Contact" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceTypeId" Type="Int32" />
+          <Property Name="ServiceDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerBudget" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="ScheduleDate" Type="DateTime" Precision="3" />
+          <Property Name="ReturnScheduleDate" Type="DateTime" Precision="3" />
+          <Property Name="JobStatusId" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="UtilityManagementDBModel.FK_Job_Customer" FromRole="CustomerJobRequest" ToRole="Customer" />
+          <NavigationProperty Name="JobStatus" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="CustomerJobRequest" ToRole="JobStatus" />
+          <NavigationProperty Name="ServiceType" Relationship="UtilityManagementDBModel.FK_Job_ServiceType" FromRole="CustomerJobRequest" ToRole="ServiceType" />
+        </EntityType>
+        <EntityType Name="JobStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="JobStatus" ToRole="CustomerJobRequest" />
+        </EntityType>
+        <Association Name="FK_Job_Customer">
+          <End Type="UtilityManagementDBModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerJobRequest_JobStatus">
+          <End Type="UtilityManagementDBModel.JobStatus" Role="JobStatus" Multiplicity="0..1" />
+          <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="JobStatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_ServiceType">
+          <End Type="UtilityManagementDBModel.ServiceType" Role="ServiceType" Multiplicity="0..1" />
+          <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerJobRequest">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -913,6 +1067,32 @@
             <EntityTypeMapping TypeName="UtilityManagementDBModel.ServiceType">
               <MappingFragment StoreEntitySet="ServiceType">
                 <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerJobRequest">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.CustomerJobRequest">
+              <MappingFragment StoreEntitySet="CustomerJobRequest">
+                <ScalarProperty Name="JobStatusId" ColumnName="JobStatusId" />
+                <ScalarProperty Name="ReturnScheduleDate" ColumnName="ReturnScheduleDate" />
+                <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="CustomerBudget" ColumnName="CustomerBudget" />
+                <ScalarProperty Name="ServiceDetails" ColumnName="ServiceDetails" />
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="ServiceAddress" ColumnName="ServiceAddress" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobStatus">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.JobStatus">
+              <MappingFragment StoreEntitySet="JobStatus">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

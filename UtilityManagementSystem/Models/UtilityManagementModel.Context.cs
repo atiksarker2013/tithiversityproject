@@ -37,5 +37,7 @@ namespace UtilityManagementSystem.Models
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Vendor> Vendor { get; set; }
         public virtual DbSet<ServiceType> ServiceType { get; set; }
+        public virtual DbSet<CustomerJobRequest> CustomerJobRequest { get; set; }
+        public virtual DbSet<JobStatus> JobStatus { get; set; }
     }
 }
