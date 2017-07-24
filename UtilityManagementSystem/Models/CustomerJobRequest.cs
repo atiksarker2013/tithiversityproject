@@ -14,6 +14,12 @@ namespace UtilityManagementSystem.Models
     
     public partial class CustomerJobRequest
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CustomerJobRequest()
+        {
+            this.Job = new HashSet<Job>();
+        }
+    
         public int Id { get; set; }
         public string JobName { get; set; }
         public Nullable<int> CustomerId { get; set; }
@@ -30,5 +36,7 @@ namespace UtilityManagementSystem.Models
         public virtual Customer Customer { get; set; }
         public virtual JobStatus JobStatus { get; set; }
         public virtual ServiceType ServiceType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Job> Job { get; set; }
     }
 }

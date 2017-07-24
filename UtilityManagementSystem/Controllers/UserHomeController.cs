@@ -33,20 +33,44 @@ namespace UtilityManagementSystem.Controllers
 
             try
             {
+                int mobilePassword = 0;
                 StaffList obj = db.StaffList.SingleOrDefault(m => m.Username == username && m.Password == password && m.IsDelete == false && m.IsUser == true);
                 if (obj == null)
                 {
-                    Exception e = new Exception("Incorrect user access.");
-                    return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
+                    mobilePassword = Convert.ToInt32(password);
+                    Customer customerObj = db.Customer.SingleOrDefault(m => m.Email == username && m.Mobile == mobilePassword);
+                    if (customerObj ==null)
+                    {
+                        Vendor vendorObj = db.Vendor.SingleOrDefault(m => m.Email == username && m.Phone == password);
+                        if (vendorObj ==null)
+                        {
+                            Exception e = new Exception("Incorrect user access.");
+                            return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
+                        }
+                        else
+                        {
+                            GlobalClass.LoginVendorUser = vendorObj;
+                            GlobalClass.SystemSession = true;
+                            return RedirectToAction("Index", "UserHome");
+
+                        }
+                    }
+                    else
+                    {
+                        GlobalClass.LoginCustomerUser = customerObj;
+                        GlobalClass.SystemSession = true;
+                        return RedirectToAction("Index", "UserHome");
+
+                    }
+                   
                 }
                 else
                 {
                     GlobalClass.LoginUser = obj;
-
-                    GlobalClass.Company = db.Company.SingleOrDefault(m => m.CompanyKey == obj.CompanyKey);
-                    GlobalClass.SystemSession = true;
                     return RedirectToAction("Index", "UserHome");
                 }
+
+              //  return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
 
             }
             catch (DivideByZeroException e)

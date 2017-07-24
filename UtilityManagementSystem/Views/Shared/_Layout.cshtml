@@ -14,6 +14,9 @@
     
 </head>
  
+@using UtilityManagementSystem.Models
+ 
+
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -37,7 +40,7 @@
                           
                             <li class="divider"></li>
                             <li>
-                                <a href="@Url.Action("Logout","UserHome")"><i class="fa fa-sign-out"></i> Logout</a>
+                                <a href="@Url.Action("Logout", "UserHome")"><i class="fa fa-sign-out"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -53,26 +56,58 @@
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
 
+                        @{
 
-                        <li class="me">
-                            <a href="@Url.Action("Index", "Vendors")"><i class="fa fa-dashboard "></i>Vendor</a>
-                        </li>
+                            if (GlobalClass.LoginUser != null)
+                            {
 
-                        <li class="me">
-                            <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
-                        </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Vendors")"><i class="fa fa-dashboard "></i>Vendor</a>
+                                </li>
 
-                        <li class="me">
-                            <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
-                        </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
+                                </li>
 
-                        <li class="me">
-                            <a href="@Url.Action("Index", "JobStatus")"><i class="fa fa-dashboard "></i>Job Status</a>
-                        </li>
-                        
-                        <li class="me">
-                            <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
-                        </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
+                                </li>
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "JobStatus")"><i class="fa fa-dashboard "></i>Job Status</a>
+                                </li>
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
+                                </li>
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Jobs")"><i class="fa fa-dashboard "></i>Job</a>
+                                </li>
+
+
+                            }
+                            else if (GlobalClass.LoginVendorUser != null)
+                            {
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Jobs")"><i class="fa fa-dashboard "></i>Job</a>
+                                </li>
+
+                            }
+
+                            else if (GlobalClass.LoginCustomerUser != null)
+                            {
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
+                                </li>
+
+                            }
+
+                        }
+
+                       
                       
 
                         

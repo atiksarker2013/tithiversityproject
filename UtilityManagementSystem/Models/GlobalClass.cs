@@ -83,6 +83,48 @@ namespace UtilityManagementSystem.Models
                 HttpContext.Current.Session[GlobalClass._LoginUser] = value;
             }
         }
+
+        static private string _LoginCustomerUser = "LoginCustomerUser";
+        public static Customer LoginCustomerUser
+        {
+            get
+            {
+                if (HttpContext.Current.Session[GlobalClass._LoginCustomerUser] == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (Customer)(HttpContext.Current.Session[GlobalClass._LoginCustomerUser]);
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session[GlobalClass._LoginCustomerUser] = value;
+            }
+        }
+
+        static private string _LoginVendorUser = "LoginVendorUser";
+        public static Vendor LoginVendorUser
+        {
+            get
+            {
+                if (HttpContext.Current.Session[GlobalClass._LoginVendorUser] == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (Vendor)(HttpContext.Current.Session[GlobalClass._LoginVendorUser]);
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session[GlobalClass._LoginVendorUser] = value;
+            }
+        }
+
+
         static private string _Company = "Company";
         public static Company Company
         {

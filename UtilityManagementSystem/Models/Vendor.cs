@@ -14,6 +14,12 @@ namespace UtilityManagementSystem.Models
     
     public partial class Vendor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Vendor()
+        {
+            this.Job = new HashSet<Job>();
+        }
+    
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public string ContactPerson { get; set; }
@@ -21,5 +27,8 @@ namespace UtilityManagementSystem.Models
         public string Phone { get; set; }
         public string Address { get; set; }
         public string TradeLisenceNumber { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Job> Job { get; set; }
     }
 }

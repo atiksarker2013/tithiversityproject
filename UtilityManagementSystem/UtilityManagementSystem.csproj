@@ -156,6 +156,7 @@
     <Compile Include="Controllers\CustomerJobRequestsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\JobStatusController.cs" />
     <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -188,6 +189,9 @@
     </Compile>
     <Compile Include="Models\FormValidation.cs" />
     <Compile Include="Models\GlobalClass.cs" />
+    <Compile Include="Models\Job.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\JobStatus.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -393,6 +397,7 @@
     <Content Include="DataBase Script\2.sql" />
     <Content Include="DataBase Script\3.sql" />
     <Content Include="DataBase Script\utility5.sql" />
+    <Content Include="DataBase Script\Utility6.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -571,6 +576,11 @@
     <Content Include="Views\CustomerJobRequests\Details.cshtml" />
     <Content Include="Views\CustomerJobRequests\Edit.cshtml" />
     <Content Include="Views\CustomerJobRequests\Index.cshtml" />
+    <Content Include="Views\Jobs\Create.cshtml" />
+    <Content Include="Views\Jobs\Delete.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Jobs\Edit.cshtml" />
+    <Content Include="Views\Jobs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
