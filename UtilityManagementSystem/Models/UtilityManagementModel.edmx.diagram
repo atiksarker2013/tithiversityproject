@@ -5,28 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bc34f3658007497f9b1d99e611064162" Name="Diagram1" ZoomLevel="90">
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Company" Width="1.5" PointX="4.25" PointY="2.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.CompanyForm" Width="1.5" PointX="4.875" PointY="1" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.CompanyModule" Width="1.5" PointX="3.25" PointY="1.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Forms" Width="1.5" PointX="0.5" PointY="2.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Modules" Width="1.5" PointX="0.5" PointY="2.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.StaffList" Width="1.5" PointX="3" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Usergroup" Width="1.5" PointX="0.5" PointY="0.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.UserGroupForm" Width="1.5" PointX="2.25" PointY="2.375" IsExpanded="false" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.UserGroupModule" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_CompanyForm_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_CompanyModule_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_Usergroup_Company" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_CompanyForm_Forms" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_CompanyForm_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_CompanyModule_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_Forms_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupForm_Forms" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupForm_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupModule_Modules" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_StaffList_Usergroup" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupForm_Usergroup" ManuallyRouted="false" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_UserGroupModule_Usergroup" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.StaffList" Width="1.5" PointX="6.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Customer" Width="1.5" PointX="14.625" PointY="2.625" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Vendor" Width="1.5" PointX="12.625" PointY="4.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.ServiceType" Width="1.5" PointX="12.625" PointY="0.625" />

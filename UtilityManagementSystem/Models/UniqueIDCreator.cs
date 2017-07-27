@@ -59,60 +59,6 @@ namespace UtilityManagementSystem.Models
 
 
 
-        public static string CreateID()
-        {
-            long numIterations = 0;
-            do
-            {
-
-                Random rand = new Random((int)DateTime.Now.Ticks);
-                numIterations = rand.Next(100, 999999999);
-
-            } while (CheckStaffID(numIterations.ToString()));
-
-            return numIterations.ToString();
-        }
-        private static bool CheckStaffID(string id)
-        {
-            UtilityManagementDBEntities db = new UtilityManagementDBEntities();
-            var uid = from x in db.StaffList where x.PID == id && x.CompanyKey == GlobalClass.Company.CompanyKey select x;
-            if (uid.Count() > 0) return true;
-            else return false;
-        }
-        public static string UniqueIDFromDateTimeOnly()
-        {
-            DateTime date = DateTime.Now;
-
-            string uniqueID = String.Format(
-              "{0:0000}{1:00}{2:00}{3:00}{4:00}{5:00}",
-              date.Year, date.Month, date.Day,
-              date.Hour, date.Minute, date.Second
-              );
-            return uniqueID;
-
-        }
-        public static string UniqueCode()
-        {
-            string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string ticks = DateTime.UtcNow.Ticks.ToString();
-            var code = "";
-            for (var i = 0; i < 6; i += 2)
-            {
-                if ((i + 2) <= ticks.Length)
-                {
-                    var number = int.Parse(ticks.Substring(i, 2));
-                    if (number > characters.Length - 1)
-                    {
-                        var one = double.Parse(number.ToString().Substring(0, 1));
-                        var two = double.Parse(number.ToString().Substring(1, 1));
-                        code += characters[Convert.ToInt32(one)];
-                        code += characters[Convert.ToInt32(two)];
-                    }
-                    else
-                        code += characters[number];
-                }
-            }
-            return code;
-        }
+        
     }
 }

@@ -42,6 +42,6 @@ namespace UtilityManagementSystem.Models
         [Compare("Password", ErrorMessage = "Your Confirm Password does not match.")]
         public string ConfirmPassword { get; set; }
         public Nullable<bool> IsUser { get; set; }
-        public virtual Usergroup Usergroup { get; set; }
+       
     }
 }

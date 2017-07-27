@@ -151,8 +151,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AssignAccessController.cs" />
-    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CustomerJobRequestsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -160,23 +158,13 @@
     <Compile Include="Controllers\JobStatusController.cs" />
     <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
-    <Compile Include="Controllers\UsergrpController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Company.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CompanyClass.cs" />
-    <Compile Include="Models\CompanyForm.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CompanyModule.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Customer.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -184,10 +172,6 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataReturn.cs" />
-    <Compile Include="Models\Forms.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\FormValidation.cs" />
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\Job.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
@@ -196,9 +180,6 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Modules.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ServiceType.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -207,15 +188,6 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UniqueIDCreator.cs" />
-    <Compile Include="Models\Usergroup.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserGroupForm.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserGroupModule.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UtilityManagementModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

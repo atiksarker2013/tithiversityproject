@@ -29,7 +29,5 @@ namespace UtilityManagementSystem.Models
         public string Password { get; set; }
         public Nullable<bool> IsUser { get; set; }
         public Nullable<bool> IsDelete { get; set; }
-    
-        public virtual Usergroup Usergroup { get; set; }
     }
 }

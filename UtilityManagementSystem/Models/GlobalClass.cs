@@ -125,25 +125,7 @@ namespace UtilityManagementSystem.Models
         }
 
 
-        static private string _Company = "Company";
-        public static Company Company
-        {
-            get
-            {
-                if (HttpContext.Current.Session[GlobalClass._Company] == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return (Company)(HttpContext.Current.Session[GlobalClass._Company]);
-                }
-            }
-            set
-            {
-                HttpContext.Current.Session[GlobalClass._Company] = value;
-            }
-        }
+        
         static private string _TempGuid = "TempGuid";
         public static int TempGuid
         {
