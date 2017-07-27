@@ -51,6 +51,8 @@ namespace UtilityManagementSystem.Controllers
             return View();
         }
 
+
+
         public ActionResult CreateByCustomer()
         {
             ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name");

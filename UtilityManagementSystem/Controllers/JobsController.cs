@@ -24,7 +24,7 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult VendorJob()
         {
-            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.VendorId== GlobalClass.LoginVendorUser.Id);
             return View(job.ToList());
         }
 
@@ -90,6 +90,24 @@ namespace UtilityManagementSystem.Controllers
             return View(job);
         }
 
+
+        public ActionResult VendorEdit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Job job = db.Job.Find(id);
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            return View(job);
+        }
+
         // POST: Jobs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -102,6 +120,24 @@ namespace UtilityManagementSystem.Controllers
                 db.Entry(job).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            return View(job);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult VendorEdit([Bind(Include = "Id,JobRequestId,VendorId,VendorCharge,MeterialDescription,MaterialCost,JobStatusId")] Job job)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(job).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("VendorJob");
             }
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);

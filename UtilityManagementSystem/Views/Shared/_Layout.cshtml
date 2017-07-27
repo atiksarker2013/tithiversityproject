@@ -22,7 +22,7 @@
         <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
 
-                <a class="navbar-brand" href="@Url.Action("Index", "tbl_Rx")">
+                <a class="navbar-brand" >
 
                   Utility Service                  
                 </a>
@@ -87,23 +87,23 @@
 
 
                             }
-                            else if (GlobalClass.LoginVendorUser != null)
+                            @*else if (GlobalClass.LoginVendorUser != null)
                             {
 
                                 <li class="me">
                                     <a href="@Url.Action("Index", "Jobs")"><i class="fa fa-dashboard "></i>Job</a>
                                 </li>
 
-                            }
+                            }*@
 
-                            else if (GlobalClass.LoginCustomerUser != null)
+                            @*else if (GlobalClass.LoginCustomerUser != null)
                             {
 
                                 <li class="me">
                                     <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
                                 </li>
 
-                            }
+                            }*@
 
                         }
 
