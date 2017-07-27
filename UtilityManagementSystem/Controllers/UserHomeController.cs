@@ -23,10 +23,9 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult Login()
         {
-
-
             return View();
         }
+
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
@@ -67,7 +66,7 @@ namespace UtilityManagementSystem.Controllers
                 else
                 {
                     GlobalClass.LoginUser = obj;
-                    return RedirectToAction("Index", "UserHome");
+                    return RedirectToAction("Index", "Jobs");
                 }
 
               //  return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
@@ -106,35 +105,8 @@ namespace UtilityManagementSystem.Controllers
         }
 
 
-        public ActionResult RedirectToCustomerMesseging()
-        {
-            if (GlobalClass.SystemSession)
-            {
-                return RedirectToAction("CustomerMesseging", "MgtJobMesseging", new { id = GlobalClass.StoreGuid });
-            }
-            else
-            {
-                Exception e = new Exception("Sorry, your Session has Expired");
-                return View("Error", new HandleErrorInfo(e, "UserHome", "Logout"));
-            }
-
-        }
-
-
-        public ActionResult Setup()
-        {
-            if (GlobalClass.SystemSession)
-            {
-                return View();
-            }
-            else
-            {
-                Exception e = new Exception("Sorry, your Session has Expired");
-                return View("Error", new HandleErrorInfo(e, "UserHome", "Logout"));
-            }
-
-        }
-
+        
+       
         public ActionResult Index()
         {
             if (GlobalClass.SystemSession)
