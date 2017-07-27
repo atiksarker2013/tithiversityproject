@@ -553,6 +553,8 @@
     <Content Include="Views\Jobs\Details.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
+    <Content Include="Views\CustomerJobRequests\CustomerJobRequest.cshtml" />
+    <Content Include="Views\CustomerJobRequests\CreateByCustomer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -21,6 +21,12 @@ namespace UtilityManagementSystem.Controllers
             return View(customerJobRequest.ToList());
         }
 
+        public ActionResult CustomerJobRequest()
+        {
+            var customerJobRequest = db.CustomerJobRequest.Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType).Where(m=>m.CustomerId== GlobalClass.LoginCustomerUser.Id);
+            return View(customerJobRequest.ToList());
+        }
+
         // GET: CustomerJobRequests/Details/5
         public ActionResult Details(int? id)
         {
@@ -45,6 +51,14 @@ namespace UtilityManagementSystem.Controllers
             return View();
         }
 
+        public ActionResult CreateByCustomer()
+        {
+            ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name");
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
+            ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName");
+            return View();
+        }
+
         // POST: CustomerJobRequests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -57,6 +71,24 @@ namespace UtilityManagementSystem.Controllers
                 db.CustomerJobRequest.Add(customerJobRequest);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }
+
+            ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name", customerJobRequest.CustomerId);
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", customerJobRequest.JobStatusId);
+            ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName", customerJobRequest.ServiceTypeId);
+            return View(customerJobRequest);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateByCustomer([Bind(Include = "Id,JobName,CustomerId,Contact,ServiceAddress,ServiceTypeId,ServiceDetails,CustomerBudget,EntryDate,ScheduleDate,ReturnScheduleDate,JobStatusId")] CustomerJobRequest customerJobRequest)
+        {
+            if (ModelState.IsValid)
+            {
+                db.CustomerJobRequest.Add(customerJobRequest);
+                db.SaveChanges();
+                return RedirectToAction("CustomerJobRequest");
             }
 
             ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name", customerJobRequest.CustomerId);

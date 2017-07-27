@@ -59,7 +59,7 @@ namespace UtilityManagementSystem.Controllers
                     {
                         GlobalClass.LoginCustomerUser = customerObj;
                         GlobalClass.SystemSession = true;
-                        return RedirectToAction("Index", "UserHome");
+                        return RedirectToAction("CustomerJobRequest", "CustomerJobRequests");
 
                     }
                    
