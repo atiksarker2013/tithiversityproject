@@ -21,6 +21,13 @@ namespace UtilityManagementSystem.Controllers
             return View(job.ToList());
         }
 
+
+        public ActionResult VendorJob()
+        {
+            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+        }
+
         // GET: Jobs/Details/5
         public ActionResult Details(int? id)
         {

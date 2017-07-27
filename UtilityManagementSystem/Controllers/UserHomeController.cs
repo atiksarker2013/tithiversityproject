@@ -51,7 +51,7 @@ namespace UtilityManagementSystem.Controllers
                         {
                             GlobalClass.LoginVendorUser = vendorObj;
                             GlobalClass.SystemSession = true;
-                            return RedirectToAction("Index", "UserHome");
+                            return RedirectToAction("VendorJob", "Jobs");
 
                         }
                     }
