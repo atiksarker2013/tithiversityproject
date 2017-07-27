@@ -374,6 +374,7 @@
     <Content Include="DataBase Script\1.sql" />
     <Content Include="DataBase Script\2.sql" />
     <Content Include="DataBase Script\3.sql" />
+    <Content Include="DataBase Script\utility 8.sql" />
     <Content Include="DataBase Script\utility5.sql" />
     <Content Include="DataBase Script\Utility6.sql" />
     <Content Include="DataBase Script\Utility7.sql" />
