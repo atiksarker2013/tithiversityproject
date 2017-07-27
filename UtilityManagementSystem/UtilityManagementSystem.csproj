@@ -164,6 +164,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Company.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CompanyClass.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
@@ -188,6 +191,9 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UniqueIDCreator.cs" />
+    <Compile Include="Models\Usergroup.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UtilityManagementModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
