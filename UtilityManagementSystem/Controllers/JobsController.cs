@@ -28,6 +28,20 @@ namespace UtilityManagementSystem.Controllers
             return View(job.ToList());
         }
 
+        public ActionResult CustomerJobDetailsDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CustomerJobRequest customerJobRequest = db.CustomerJobRequest.Find(id);
+            if (customerJobRequest == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customerJobRequest);
+        }
+
         // GET: Jobs/Details/5
         public ActionResult Details(int? id)
         {
