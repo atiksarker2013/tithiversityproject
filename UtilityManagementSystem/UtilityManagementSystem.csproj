@@ -565,6 +565,7 @@
     <Content Include="Views\CustomerJobRequests\CreateByCustomer.cshtml" />
     <Content Include="Views\Jobs\VendorJob.cshtml" />
     <Content Include="Views\Jobs\VendorEdit.cshtml" />
+    <Content Include="Views\Jobs\VendorJobDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

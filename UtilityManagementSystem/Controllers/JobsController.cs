@@ -43,6 +43,20 @@ namespace UtilityManagementSystem.Controllers
             return View(job);
         }
 
+        public ActionResult VendorJobDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Job job = db.Job.Find(id);
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+            return View(job);
+        }
+
         // GET: Jobs/Create
         public ActionResult Create()
         {
