@@ -5,23 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bc34f3658007497f9b1d99e611064162" Name="Diagram1" ZoomLevel="90">
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Company" Width="1.5" PointX="5.75" PointY="7" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Customer" Width="1.5" PointX="0.75" PointY="6.125" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerJobRequest" Width="1.5" PointX="3" PointY="2" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Job" Width="1.5" PointX="5.25" PointY="2.5" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.JobStatus" Width="1.5" PointX="0.75" PointY="3.125" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.ServiceType" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.StaffList" Width="1.5" PointX="10.25" PointY="7.375" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.Usergroup" Width="1.5" PointX="8" PointY="8.375" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.StaffList" Width="1.5" PointX="5.75" PointY="6.625" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Vendor" Width="1.5" PointX="3" PointY="7.75" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_Usergroup_Company" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_Customer" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_CustomerJobRequest" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_ServiceType" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_JobStatus" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_Vendor" />
-        <AssociationConnector Association="UtilityManagementDBModel.FK_StaffList_Usergroup" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

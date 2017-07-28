@@ -163,18 +163,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Company.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CompanyClass.cs" />
     <Compile Include="Models\Customer.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CustomerJobRequest.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataReturn.cs" />
     <Compile Include="Models\GlobalClass.cs" />
     <Compile Include="Models\Job.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
@@ -182,16 +176,10 @@
     <Compile Include="Models\JobStatus.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ServiceType.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StaffClass.cs" />
     <Compile Include="Models\StaffList.cs">
-      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UniqueIDCreator.cs" />
-    <Compile Include="Models\Usergroup.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UtilityManagementModel.Context.cs">

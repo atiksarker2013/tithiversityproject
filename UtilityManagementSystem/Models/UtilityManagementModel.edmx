@@ -5,30 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UtilityManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyKey" />
-          </Key>
-          <Property Name="CompanyKey" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="CompanyID" Type="nvarchar(max)" />
-          <Property Name="CompanyName" Type="nvarchar(max)" />
-          <Property Name="CompanyAddress" Type="nvarchar(max)" />
-          <Property Name="CompanyPhone" Type="nvarchar(max)" />
-          <Property Name="CompanyMobile" Type="nvarchar(max)" />
-          <Property Name="CompanyEmail" Type="nvarchar(max)" />
-          <Property Name="CompanyWebsite" Type="nvarchar(max)" />
-          <Property Name="CompanyFax" Type="nvarchar(max)" />
-          <Property Name="ContactPersonName" Type="nvarchar(max)" />
-          <Property Name="ContactPersonNo" Type="nvarchar(max)" />
-          <Property Name="Logo" Type="image" />
-          <Property Name="LogoType" Type="varchar(max)" />
-          <Property Name="IsDelete" Type="bit" />
-          <Property Name="StateCode" Type="int" />
-          <Property Name="CityKey" Type="int" />
-          <Property Name="ZIPKey" Type="bigint" />
-          <Property Name="Title" Type="nvarchar(max)" />
-          <Property Name="ContactEmail" Type="nvarchar(max)" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -101,15 +77,6 @@
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="IsUser" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
-        </EntityType>
-        <EntityType Name="Usergroup">
-          <Key>
-            <PropertyRef Name="UserGroupKey" />
-          </Key>
-          <Property Name="UserGroupKey" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="GroupID" Type="nvarchar(max)" />
-          <Property Name="GroupName" Type="nvarchar(max)" />
-          <Property Name="CompanyKey" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -195,39 +162,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StaffList_Usergroup">
-          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="0..1" />
-          <End Role="StaffList" Type="Self.StaffList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usergroup">
-              <PropertyRef Name="UserGroupKey" />
-            </Principal>
-            <Dependent Role="StaffList">
-              <PropertyRef Name="Usergr" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usergroup_Company">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
-          <End Role="Usergroup" Type="Self.Usergroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="CompanyKey" />
-            </Principal>
-            <Dependent Role="Usergroup">
-              <PropertyRef Name="CompanyKey" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="UtilityManagementDBModelStoreContainer">
-          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerJobRequest" EntityType="Self.CustomerJobRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobStatus" EntityType="Self.JobStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="Self.FK_CustomerJobRequest_JobStatus">
             <End Role="JobStatus" EntitySet="JobStatus" />
@@ -253,33 +194,19 @@
             <End Role="Vendor" EntitySet="Vendor" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK_StaffList_Usergroup" Association="Self.FK_StaffList_Usergroup">
-            <End Role="Usergroup" EntitySet="Usergroup" />
-            <End Role="StaffList" EntitySet="StaffList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usergroup_Company" Association="Self.FK_Usergroup_Company">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Usergroup" EntitySet="Usergroup" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UtilityManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UtilityManagementDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Company" EntityType="UtilityManagementDBModel.Company" />
           <EntitySet Name="Customer" EntityType="UtilityManagementDBModel.Customer" />
           <EntitySet Name="CustomerJobRequest" EntityType="UtilityManagementDBModel.CustomerJobRequest" />
           <EntitySet Name="Job" EntityType="UtilityManagementDBModel.Job" />
           <EntitySet Name="JobStatus" EntityType="UtilityManagementDBModel.JobStatus" />
           <EntitySet Name="ServiceType" EntityType="UtilityManagementDBModel.ServiceType" />
           <EntitySet Name="StaffList" EntityType="UtilityManagementDBModel.StaffList" />
-          <EntitySet Name="Usergroup" EntityType="UtilityManagementDBModel.Usergroup" />
           <EntitySet Name="Vendor" EntityType="UtilityManagementDBModel.Vendor" />
-          <AssociationSet Name="FK_Usergroup_Company" Association="UtilityManagementDBModel.FK_Usergroup_Company">
-            <End Role="Company" EntitySet="Company" />
-            <End Role="Usergroup" EntitySet="Usergroup" />
-          </AssociationSet>
           <AssociationSet Name="FK_Job_Customer" Association="UtilityManagementDBModel.FK_Job_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
@@ -304,36 +231,7 @@
             <End Role="Vendor" EntitySet="Vendor" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK_StaffList_Usergroup" Association="UtilityManagementDBModel.FK_StaffList_Usergroup">
-            <End Role="Usergroup" EntitySet="Usergroup" />
-            <End Role="StaffList" EntitySet="StaffList" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Company">
-          <Key>
-            <PropertyRef Name="CompanyKey" />
-          </Key>
-          <Property Name="CompanyKey" Type="Guid" Nullable="false" />
-          <Property Name="CompanyID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyPhone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyMobile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyWebsite" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyFax" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactPersonName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactPersonNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="LogoType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IsDelete" Type="Boolean" />
-          <Property Name="StateCode" Type="Int32" />
-          <Property Name="CityKey" Type="Int32" />
-          <Property Name="ZIPKey" Type="Int64" />
-          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ContactEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Usergroup" Relationship="UtilityManagementDBModel.FK_Usergroup_Company" FromRole="Company" ToRole="Usergroup" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -417,18 +315,6 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsUser" Type="Boolean" />
           <Property Name="IsDelete" Type="Boolean" />
-          <NavigationProperty Name="Usergroup" Relationship="UtilityManagementDBModel.FK_StaffList_Usergroup" FromRole="StaffList" ToRole="Usergroup" />
-        </EntityType>
-        <EntityType Name="Usergroup">
-          <Key>
-            <PropertyRef Name="UserGroupKey" />
-          </Key>
-          <Property Name="UserGroupKey" Type="Guid" Nullable="false" />
-          <Property Name="GroupID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GroupName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyKey" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Company" Relationship="UtilityManagementDBModel.FK_Usergroup_Company" FromRole="Usergroup" ToRole="Company" />
-          <NavigationProperty Name="StaffList" Relationship="UtilityManagementDBModel.FK_StaffList_Usergroup" FromRole="Usergroup" ToRole="StaffList" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -443,18 +329,6 @@
           <Property Name="TradeLisenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Job" Relationship="UtilityManagementDBModel.FK_Job_Vendor" FromRole="Vendor" ToRole="Job" />
         </EntityType>
-        <Association Name="FK_Usergroup_Company">
-          <End Type="UtilityManagementDBModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="UtilityManagementDBModel.Usergroup" Role="Usergroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="CompanyKey" />
-            </Principal>
-            <Dependent Role="Usergroup">
-              <PropertyRef Name="CompanyKey" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Job_Customer">
           <End Type="UtilityManagementDBModel.Customer" Role="Customer" Multiplicity="0..1" />
           <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="*" />
@@ -527,49 +401,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StaffList_Usergroup">
-          <End Type="UtilityManagementDBModel.Usergroup" Role="Usergroup" Multiplicity="0..1" />
-          <End Type="UtilityManagementDBModel.StaffList" Role="StaffList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usergroup">
-              <PropertyRef Name="UserGroupKey" />
-            </Principal>
-            <Dependent Role="StaffList">
-              <PropertyRef Name="Usergr" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UtilityManagementDBModelStoreContainer" CdmEntityContainer="UtilityManagementDBEntities">
-          <EntitySetMapping Name="Company">
-            <EntityTypeMapping TypeName="UtilityManagementDBModel.Company">
-              <MappingFragment StoreEntitySet="Company">
-                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="ZIPKey" ColumnName="ZIPKey" />
-                <ScalarProperty Name="CityKey" ColumnName="CityKey" />
-                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="LogoType" ColumnName="LogoType" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
-                <ScalarProperty Name="ContactPersonNo" ColumnName="ContactPersonNo" />
-                <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
-                <ScalarProperty Name="CompanyFax" ColumnName="CompanyFax" />
-                <ScalarProperty Name="CompanyWebsite" ColumnName="CompanyWebsite" />
-                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
-                <ScalarProperty Name="CompanyMobile" ColumnName="CompanyMobile" />
-                <ScalarProperty Name="CompanyPhone" ColumnName="CompanyPhone" />
-                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="UtilityManagementDBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
@@ -646,16 +483,6 @@
                 <ScalarProperty Name="PName" ColumnName="PName" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
                 <ScalarProperty Name="PersonnelKey" ColumnName="PersonnelKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usergroup">
-            <EntityTypeMapping TypeName="UtilityManagementDBModel.Usergroup">
-              <MappingFragment StoreEntitySet="Usergroup">
-                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
-                <ScalarProperty Name="UserGroupKey" ColumnName="UserGroupKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
