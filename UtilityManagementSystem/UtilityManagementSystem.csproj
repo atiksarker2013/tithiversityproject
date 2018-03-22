@@ -380,6 +380,7 @@
       <DependentUpon>UtilityManagementModel.edmx</DependentUpon>
       <LastGenOutput>UtilityManagementModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

@@ -32,7 +32,7 @@ namespace UtilityManagementSystem
 
                  "~/Scripts/moment.js",
                             "~/Scripts/bootstrap.js",
-                               "~/Scripts/bootstrap-datetimepicker",
+                               
                              //"~/Scripts/jquery-ui.js",
                              "~/Scripts/jquery-ui-1.12.1.js",
                             "~/Content/assets/js/jquery-3.1.1.js",
@@ -41,7 +41,7 @@ namespace UtilityManagementSystem
                              "~/Scripts/jquery.dataTables.js",
                               "~/Scripts/dataTables.bootstrap.js",
                                "~/ckeditor/ckeditor.js",
-
+                               "~/Scripts/bootstrap-datetimepicker.js",
                             "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
