@@ -74,7 +74,7 @@ namespace UtilityManagementSystem.Controllers
         // GET: Jobs/Create
         public ActionResult Create()
         {
-            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName");
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m=>m.JobStatusId==1), "Id", "JobName");
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName");
             return View();
@@ -94,7 +94,7 @@ namespace UtilityManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m => m.JobStatusId == 1), "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
             return View(job);
