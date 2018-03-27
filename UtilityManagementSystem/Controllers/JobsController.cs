@@ -52,6 +52,7 @@ namespace UtilityManagementSystem.Controllers
                 return HttpNotFound();
             }
             return View(customerJobRequest);
+
         }
 
         // GET: Jobs/Details/5
