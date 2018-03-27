@@ -19,6 +19,7 @@ namespace UtilityManagementSystem.Controllers
         // GET: Jobs
         public ActionResult Index()
         {
+
             var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
             return View(job.ToList());
         }
