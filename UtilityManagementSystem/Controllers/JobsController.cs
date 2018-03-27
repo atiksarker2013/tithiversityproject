@@ -93,6 +93,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName");
             return View();
+
         }
 
         // POST: Jobs/Create
