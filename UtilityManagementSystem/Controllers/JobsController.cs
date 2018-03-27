@@ -187,6 +187,7 @@ namespace UtilityManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("VendorJob");
             }
+
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
