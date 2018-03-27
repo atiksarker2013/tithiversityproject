@@ -219,6 +219,7 @@ namespace UtilityManagementSystem.Controllers
             db.Job.Remove(job);
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)
