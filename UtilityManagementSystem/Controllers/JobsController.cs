@@ -37,6 +37,7 @@ namespace UtilityManagementSystem.Controllers
         {
             var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.VendorId== GlobalClass.LoginVendorUser.Id);
             return View(job.ToList());
+
         }
 
         public ActionResult CustomerJobDetailsDetails(int? id)
