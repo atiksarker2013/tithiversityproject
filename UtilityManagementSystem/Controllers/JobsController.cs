@@ -108,6 +108,7 @@ namespace UtilityManagementSystem.Controllers
                 db.Job.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+
             }
 
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m => m.JobStatusId == 1), "Id", "JobName", job.JobRequestId);
