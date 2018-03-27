@@ -24,6 +24,7 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult CompletedJob()
         {
+
             var job = db.Job.Where(m=>m.JobStatusId==5).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
             return View(job.ToList());
         }
