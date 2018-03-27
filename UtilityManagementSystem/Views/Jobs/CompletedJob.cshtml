@@ -1,0 +1,67 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.Job>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Job Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.VendorCharge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MeterialDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaterialCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerJobRequest.JobName)
+        </th>
+        <th>
+            Job Status
+        </th>
+        <th>
+            Vendor Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.VendorCharge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MeterialDescription)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaterialCost)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CustomerJobRequest.JobName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.JobStatus.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Vendor.CompanyName)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+</tr>
+}
+
+</table>

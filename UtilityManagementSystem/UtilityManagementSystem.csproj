@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -557,6 +558,7 @@
     <Content Include="Views\Jobs\VendorJobDetails.cshtml" />
     <Content Include="Views\CustomerJobRequests\CustomerJobDetailsDetails.cshtml" />
     <Content Include="Views\Jobs\CustomerJobDetailsDetails.cshtml" />
+    <Content Include="Views\Jobs\CompletedJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -596,7 +598,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54969</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

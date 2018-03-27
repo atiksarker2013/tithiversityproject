@@ -17,7 +17,7 @@ namespace UtilityManagementSystem.Controllers
         // GET: CustomerJobRequests
         public ActionResult Index()
         {
-            var customerJobRequest = db.CustomerJobRequest.Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType);
+            var customerJobRequest = db.CustomerJobRequest.Where(m => m.JobStatusId == 1).Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType);
             return View(customerJobRequest.ToList());
         }
 
