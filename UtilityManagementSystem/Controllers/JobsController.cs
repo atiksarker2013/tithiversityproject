@@ -77,6 +77,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Job job = db.Job.Find(id);
             if (job == null)
             {
