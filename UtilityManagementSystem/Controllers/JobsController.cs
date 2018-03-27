@@ -67,6 +67,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(job);
         }
 
