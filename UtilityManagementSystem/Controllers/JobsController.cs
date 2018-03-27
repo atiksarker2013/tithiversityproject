@@ -15,6 +15,7 @@ namespace UtilityManagementSystem.Controllers
         private UtilityManagementDBEntities db = new UtilityManagementDBEntities();
 
 
+
         // GET: Jobs
         public ActionResult Index()
         {
