@@ -153,6 +153,7 @@ namespace UtilityManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name", customerJobRequest.CustomerId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", customerJobRequest.JobStatusId);
             ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName", customerJobRequest.ServiceTypeId);
