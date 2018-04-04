@@ -128,6 +128,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             CustomerJobRequest customerJobRequest = db.CustomerJobRequest.Find(id);
             if (customerJobRequest == null)
             {
