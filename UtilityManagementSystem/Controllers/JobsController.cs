@@ -32,6 +32,14 @@ namespace UtilityManagementSystem.Controllers
 
         }
 
+        public ActionResult PaymentReceive()
+        {
+
+            var job = db.Job.Where(m => m.JobStatusId == 6).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+
+        }
+
 
         public ActionResult VendorJob()
         {

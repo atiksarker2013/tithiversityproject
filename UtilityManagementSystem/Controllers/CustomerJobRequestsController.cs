@@ -19,6 +19,7 @@ namespace UtilityManagementSystem.Controllers
         {
             var customerJobRequest = db.CustomerJobRequest.Where(m => m.JobStatusId == 1).Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType);
             return View(customerJobRequest.ToList());
+
         }
 
         public ActionResult CustomerJobRequest()
