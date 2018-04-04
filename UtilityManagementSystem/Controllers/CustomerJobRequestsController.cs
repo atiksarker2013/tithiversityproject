@@ -172,6 +172,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(customerJobRequest);
         }
 
