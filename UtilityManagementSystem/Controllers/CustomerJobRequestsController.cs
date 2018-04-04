@@ -26,6 +26,7 @@ namespace UtilityManagementSystem.Controllers
         {
             var customerJobRequest = db.CustomerJobRequest.Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType).Where(m=>m.CustomerId== GlobalClass.LoginCustomerUser.Id);
             return View(customerJobRequest.ToList());
+
         }
 
         // GET: CustomerJobRequests/Details/5
