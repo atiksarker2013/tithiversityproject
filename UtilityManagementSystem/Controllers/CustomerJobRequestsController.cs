@@ -78,6 +78,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
             ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName");
             return View();
+
         }
 
         // POST: CustomerJobRequests/Create
