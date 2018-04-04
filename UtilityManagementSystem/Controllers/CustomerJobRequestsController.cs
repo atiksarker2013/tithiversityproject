@@ -99,6 +99,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", customerJobRequest.JobStatusId);
             ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName", customerJobRequest.ServiceTypeId);
             return View(customerJobRequest);
+
         }
 
 
