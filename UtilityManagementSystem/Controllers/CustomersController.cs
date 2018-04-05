@@ -120,6 +120,7 @@ namespace UtilityManagementSystem.Controllers
             db.Customer.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)
