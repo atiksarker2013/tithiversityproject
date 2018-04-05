@@ -18,6 +18,7 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult Index()
         {
             return View(db.Customer.ToList());
+
         }
 
         // GET: Customers/Details/5
