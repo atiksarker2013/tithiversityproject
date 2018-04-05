@@ -12,6 +12,7 @@ namespace UtilityManagementSystem.Controllers
         {
             return View();
 
+
         }
 
         public ActionResult About()
@@ -20,6 +21,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.TITHI = "My Name is tithi.";
 
             return View();
+
         }
 
         public ActionResult Contact()
