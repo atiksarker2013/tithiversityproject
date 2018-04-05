@@ -28,6 +28,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Customer customer = db.Customer.Find(id);
             if (customer == null)
             {
