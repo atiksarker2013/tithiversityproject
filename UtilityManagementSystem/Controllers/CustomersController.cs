@@ -41,6 +41,7 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult Create()
         {
             return View();
+
         }
 
         // POST: Customers/Create
