@@ -108,6 +108,7 @@ namespace UtilityManagementSystem.Controllers
                 return HttpNotFound();
             }
             return View(customer);
+
         }
 
         // POST: Customers/Delete/5
