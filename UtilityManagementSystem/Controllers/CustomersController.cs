@@ -75,6 +75,7 @@ namespace UtilityManagementSystem.Controllers
                 return HttpNotFound();
             }
             return View(customer);
+
         }
 
         // POST: Customers/Edit/5
