@@ -20,6 +20,11 @@ namespace UtilityManagementSystem.Controllers
             return View(db.Vendor.ToList());
         }
 
+        public ActionResult AllVendorReport()
+        {
+            return View(db.Vendor.ToList());
+        }
+
         // GET: Vendors/Details/5
         public ActionResult Details(int? id)
         {

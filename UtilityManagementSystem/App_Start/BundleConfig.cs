@@ -44,7 +44,8 @@ namespace UtilityManagementSystem
                               "~/Scripts/dataTables.bootstrap.js",
                                "~/ckeditor/ckeditor.js",
                                "~/Scripts/bootstrap-datetimepicker.js",
-                            "~/Scripts/respond.js"));
+                            "~/Scripts/respond.js",
+                             "~/Scripts/printThis.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/themes/smoothness/jquery-ui.css",
@@ -52,7 +53,10 @@ namespace UtilityManagementSystem
                         "~/Content/assets/css/bootstrap-datetimepicker.css",
                       "~/Content/assets/css/font-awesome.css",
                       "~/Content/assets/css/style.css",
-                      "~/Content/datatables/dataTables.bootstrap.css"));
+                      "~/Content/datatables/dataTables.bootstrap.css"
+                       //"~/Content/Printcss/normalize.css",
+                        //"~/Content/Printcss/skeleton.css"
+                        ));
 
             bundles.Add(new StyleBundle("~/Printingcss/css").Include(
                       "~/Printingcss/css/AdminLTE.css",

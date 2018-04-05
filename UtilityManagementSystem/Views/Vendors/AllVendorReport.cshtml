@@ -1,0 +1,67 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.Vendor>
+
+@{
+    ViewBag.Title = "Index Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a id="basic" href="#nada" class="button button-primary">Print Report</a>
+<div class="demo twelve columns">
+    <h2>All Vendor List</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Company Name
+            </th>
+            <th>
+                Contact Person
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                TradeLisence Number
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TradeLisenceNumber)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+    </div>
+
+    <script>
+        $('#basic').on("click", function () {
+            $(".demo").printThis();
+        });
+
+    </script>

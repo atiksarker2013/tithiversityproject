@@ -21,6 +21,12 @@ namespace UtilityManagementSystem.Controllers
 
         }
 
+        public ActionResult AllCustomerReport()
+        {
+            return View(db.Customer.ToList());
+
+        }
+
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {

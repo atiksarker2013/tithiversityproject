@@ -160,6 +160,7 @@
     <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
+    <Compile Include="Controllers\UtilityReportController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -259,6 +260,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\just_logo.png" />
     <Content Include="Content\ntr.png" />
+    <Content Include="Content\Printcss\normalize.css" />
+    <Content Include="Content\Printcss\skeleton.css" />
     <Content Include="Content\samples.css" />
     <Content Include="Content\ss_logo_small.png" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -499,6 +502,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />
@@ -560,6 +564,9 @@
     <Content Include="Views\Jobs\CustomerJobDetailsDetails.cshtml" />
     <Content Include="Views\Jobs\CompletedJob.cshtml" />
     <Content Include="Views\Jobs\PaymentReceive.cshtml" />
+    <Content Include="Views\UtilityReport\Index.cshtml" />
+    <Content Include="Views\Customers\AllCustomerReport.cshtml" />
+    <Content Include="Views\Vendors\AllVendorReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
