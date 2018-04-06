@@ -1,0 +1,76 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<a id="basic" href="#nada" class="button button-primary">Print Report</a>
+<div class="demo twelve columns">
+    <h2>Vendor Start Work List</h2>
+
+    <table class="table" id="printTable">
+        <tr>
+
+
+            <th>
+                Vendor Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VendorCharge)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerJobRequest.JobName)
+            </th>
+
+            <th>
+                Service Details
+            </th>
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vendor.CompanyName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vendor.Address)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.VendorCharge)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerJobRequest.JobName)
+                </td>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.CustomerJobRequest.ServiceDetails)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+<script>
+    $('#basic').on("click", function () {
+        $(".demo").printThis();
+    });
+
+</script>
+

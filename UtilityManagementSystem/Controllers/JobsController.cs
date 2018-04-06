@@ -24,6 +24,34 @@ namespace UtilityManagementSystem.Controllers
             return View(job.ToList());
         }
 
+        public ActionResult SendJobDetailsToVendorReport()
+        {
+
+            var job = db.Job.Where(m => m.JobStatusId == 2).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+        }
+
+        public ActionResult VendorAcceptEstimateReport()
+        {
+
+            var job = db.Job.Where(m => m.JobStatusId == 3).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+        }
+
+        public ActionResult VendorJobCompleteReport()
+        {
+
+            var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+        }
+
+        public ActionResult VendorStartWorkReport()
+        {
+
+            var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            return View(job.ToList());
+        }
+
         public ActionResult CompletedJob()
         {
 

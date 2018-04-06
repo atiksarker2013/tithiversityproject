@@ -568,6 +568,10 @@
     <Content Include="Views\Customers\AllCustomerReport.cshtml" />
     <Content Include="Views\Vendors\AllVendorReport.cshtml" />
     <Content Include="Views\CustomerJobRequests\AllNewJobRequest.cshtml" />
+    <Content Include="Views\Jobs\SendJobDetailsToVendorReport.cshtml" />
+    <Content Include="Views\Jobs\VendorAcceptEstimateReport.cshtml" />
+    <Content Include="Views\Jobs\VendorStartWorkReport.cshtml" />
+    <Content Include="Views\Jobs\VendorJobCompleteReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
