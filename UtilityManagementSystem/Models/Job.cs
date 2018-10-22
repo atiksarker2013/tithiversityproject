@@ -15,15 +15,22 @@ namespace UtilityManagementSystem.Models
     public partial class Job
     {
         public int Id { get; set; }
+        public Nullable<int> VndorId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
         public Nullable<int> JobRequestId { get; set; }
-        public Nullable<int> VendorId { get; set; }
-        public Nullable<decimal> VendorCharge { get; set; }
-        public string MeterialDescription { get; set; }
-        public Nullable<decimal> MaterialCost { get; set; }
+        public string JobName { get; set; }
+        public string JobDescription { get; set; }
+        public Nullable<int> ServiceDescription { get; set; }
         public Nullable<int> JobStatusId { get; set; }
+        public string Remark { get; set; }
+        public Nullable<System.DateTime> EntryDate { get; set; }
+        public Nullable<System.DateTime> ScheduleDate { get; set; }
+        public Nullable<System.DateTime> VendorStartingDate { get; set; }
+        public Nullable<System.DateTime> VendorCompletionDate { get; set; }
+        public Nullable<System.DateTime> JobCompletedDate { get; set; }
     
         public virtual CustomerJobRequest CustomerJobRequest { get; set; }
-        public virtual JobStatus JobStatus { get; set; }
         public virtual Vendor Vendor { get; set; }
+        public virtual JobStatus JobStatus { get; set; }
     }
 }

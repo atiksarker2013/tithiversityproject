@@ -40,7 +40,7 @@ namespace UtilityManagementSystem.Controllers
                     Customer customerObj = db.Customer.SingleOrDefault(m => m.Email == username && m.Mobile == mobilePassword);
                     if (customerObj ==null)
                     {
-                        Vendor vendorObj = db.Vendor.SingleOrDefault(m => m.Email == username && m.Phone == password);
+                        Vendor vendorObj = db.Vendor.SingleOrDefault(m => m.Email == username && m.Mobile == password);
                         if (vendorObj ==null)
                         {
                             Exception e = new Exception("Incorrect user access.");

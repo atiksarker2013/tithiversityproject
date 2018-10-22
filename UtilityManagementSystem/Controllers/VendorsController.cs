@@ -17,12 +17,13 @@ namespace UtilityManagementSystem.Controllers
         // GET: Vendors
         public ActionResult Index()
         {
-            return View(db.Vendor.ToList());
+            return View(db.Vendor.Where(m=>m.IsEnabled==true).ToList());
         }
+       
 
         public ActionResult AllVendorReport()
         {
-            return View(db.Vendor.ToList());
+            return View(db.Vendor.Where(m => m.IsEnabled == true).ToList());
         }
 
         // GET: Vendors/Details/5
@@ -51,10 +52,11 @@ namespace UtilityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CompanyName,ContactPerson,Email,Phone,Address,TradeLisenceNumber")] Vendor vendor)
+        public ActionResult Create(Vendor vendor)
         {
             if (ModelState.IsValid)
             {
+                vendor.IsEnabled = true;
                 db.Vendor.Add(vendor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -83,7 +85,7 @@ namespace UtilityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,ContactPerson,Email,Phone,Address,TradeLisenceNumber")] Vendor vendor)
+        public ActionResult Edit( Vendor vendor)
         {
             if (ModelState.IsValid)
             {
@@ -115,9 +117,18 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Vendor vendor = db.Vendor.Find(id);
-            db.Vendor.Remove(vendor);
+            vendor.IsEnabled = false;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult DirectDelete(int id)
+        {
+            Vendor vendor = db.Vendor.Find(id);
+            vendor.IsEnabled = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

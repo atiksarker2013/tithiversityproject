@@ -12,15 +12,15 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mobile)
+            Mobile
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Email
         </dt>
 
         <dd>
@@ -36,11 +36,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            Address
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            Company Name
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyName)
         </dd>
 
     </dl>

@@ -17,7 +17,7 @@ namespace UtilityManagementSystem.Controllers
         // GET: ServiceTypes
         public ActionResult Index()
         {
-            return View(db.ServiceType.ToList());
+            return View(db.ServiceType.Where(m=>m.IsEnabled==true).ToList());
         }
 
         // GET: ServiceTypes/Details/5
@@ -46,10 +46,11 @@ namespace UtilityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ServiceName")] ServiceType serviceType)
+        public ActionResult Create( ServiceType serviceType)
         {
             if (ModelState.IsValid)
             {
+                serviceType.IsEnabled = true;
                 db.ServiceType.Add(serviceType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -110,9 +111,17 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ServiceType serviceType = db.ServiceType.Find(id);
-            db.ServiceType.Remove(serviceType);
+            serviceType.IsEnabled = false;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult DirectDelete(int id)
+        {
+            ServiceType serviceType = db.ServiceType.Find(id);
+            serviceType.IsEnabled = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

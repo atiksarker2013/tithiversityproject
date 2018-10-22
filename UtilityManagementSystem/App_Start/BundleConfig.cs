@@ -8,9 +8,10 @@ namespace UtilityManagementSystem
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                      "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-3.1.1.js",
+                        "~/Scripts/modernizr-2.8.3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryPrinting").Include(
 
@@ -28,35 +29,30 @@ namespace UtilityManagementSystem
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-
+ 
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 
-                 "~/Scripts/moment.js",
-                            "~/Scripts/bootstrap.js",
-                               
-                             //"~/Scripts/jquery-ui.js",
-                             "~/Scripts/jquery-ui-1.12.1.js",
-                            "~/Content/assets/js/jquery-3.1.1.js",
-                            "~/Content/assets/js/jquery.metisMenu.js",
-                            "~/Content/assets/js/custom.js",
-                             "~/Scripts/jquery.dataTables.js",
-                              "~/Scripts/dataTables.bootstrap.js",
-                               "~/ckeditor/ckeditor.js",
-                               "~/Scripts/bootstrap-datetimepicker.js",
-                            "~/Scripts/respond.js",
-                             "~/Scripts/printThis.js"));
+                "~/Scripts/moment.js",
+                           "~/Scripts/bootstrap.js",
+                           "~/Scripts/respond.js",
+                            "~/Scripts/jquery-ui-1.12.1.js",
+                           "~/Content/assets/js/jquery.metisMenu.js",
+                           "~/Content/assets/js/custom.js",
+                            "~/Scripts/jquery.dataTables.js",
+                             "~/Scripts/dataTables.bootstrap.js",
+                              "~/ckeditor/ckeditor.js"
 
+                           ));
+
+           
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/themes/smoothness/jquery-ui.css",
-                      "~/Content/assets/css/bootstrap.css",
-                        "~/Content/assets/css/bootstrap-datetimepicker.css",
-                      "~/Content/assets/css/font-awesome.css",
-                      "~/Content/assets/css/style.css",
-                      "~/Content/datatables/dataTables.bootstrap.css"
-                       //"~/Content/Printcss/normalize.css",
-                        //"~/Content/Printcss/skeleton.css"
-                        ));
+                     "~/Content/themes/base/jquery-ui.css",
+                     "~/Content/assets/css/bootstrap.css",
+                     "~/Content/assets/css/font-awesome.css",
+                     "~/Content/assets/css/style.css",
+                     "~/Content/datatables/dataTables.bootstrap.css"));
+
 
             bundles.Add(new StyleBundle("~/Printingcss/css").Include(
                       "~/Printingcss/css/AdminLTE.css",

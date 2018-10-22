@@ -33,9 +33,7 @@
         <th>
             Schedule Date 
         </th>
-        <th>
-            Return Schedule Date
-        </th>
+       
         <th>
             Customer Name
         </th>
@@ -71,11 +69,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.ScheduleDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReturnScheduleDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.Name)
+               <td>
+            @Html.DisplayFor(modelItem => item.Customer.name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.JobStatus.Name)

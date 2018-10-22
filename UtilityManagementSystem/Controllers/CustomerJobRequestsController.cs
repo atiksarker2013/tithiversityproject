@@ -33,7 +33,7 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult CustomerJobRequest()
         {
-            var customerJobRequest = db.CustomerJobRequest.Include(c => c.Customer).Include(c => c.JobStatus).Include(c => c.ServiceType).Where(m=>m.CustomerId== GlobalClass.LoginCustomerUser.Id);
+            var customerJobRequest = db.CustomerJobRequest.Where(m=>m.CustomerId== GlobalClass.LoginCustomerUser.Id );
             return View(customerJobRequest.ToList());
 
         }
@@ -86,6 +86,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name");
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
             ViewBag.ServiceTypeId = new SelectList(db.ServiceType, "Id", "ServiceName");
+            ViewBag.message = "";
             return View();
 
         }
@@ -95,7 +96,7 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,JobName,CustomerId,Contact,ServiceAddress,ServiceTypeId,ServiceDetails,CustomerBudget,EntryDate,ScheduleDate,ReturnScheduleDate,JobStatusId")] CustomerJobRequest customerJobRequest)
+        public ActionResult Create(CustomerJobRequest customerJobRequest)
         {
             if (ModelState.IsValid)
             {
@@ -114,13 +115,26 @@ namespace UtilityManagementSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateByCustomer([Bind(Include = "Id,JobName,CustomerId,Contact,ServiceAddress,ServiceTypeId,ServiceDetails,CustomerBudget,EntryDate,ScheduleDate,ReturnScheduleDate,JobStatusId")] CustomerJobRequest customerJobRequest)
+        public ActionResult CreateByCustomer( CustomerJobRequest customerJobRequest)
         {
+            ViewBag.message = "";
             if (ModelState.IsValid)
             {
-                db.CustomerJobRequest.Add(customerJobRequest);
-                db.SaveChanges();
-                return RedirectToAction("CustomerJobRequest");
+                if (customerJobRequest.EntryDate > customerJobRequest.ScheduleDate)
+                {
+                    ViewBag.message = "Invalid Date. Please enter then dates properly";
+                }
+                else
+                {
+                    db.CustomerJobRequest.Add(customerJobRequest);
+                    db.SaveChanges();
+                    ViewBag.message = "Thank you we will give you feedback soon";
+                    
+                   
+                    //return RedirectToAction("CustomerJobRequest");
+                    
+                }
+               
             }
 
             ViewBag.CustomerId = new SelectList(db.Customer, "Id", "Name", customerJobRequest.CustomerId);
@@ -154,7 +168,7 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,JobName,CustomerId,Contact,ServiceAddress,ServiceTypeId,ServiceDetails,CustomerBudget,EntryDate,ScheduleDate,ReturnScheduleDate,JobStatusId")] CustomerJobRequest customerJobRequest)
+        public ActionResult Edit( CustomerJobRequest customerJobRequest)
         {
             if (ModelState.IsValid)
             {

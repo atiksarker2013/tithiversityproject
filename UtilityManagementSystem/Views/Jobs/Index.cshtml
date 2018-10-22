@@ -18,15 +18,7 @@
  
     <table class="table" id="printTable">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.VendorCharge)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MeterialDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MaterialCost)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.CustomerJobRequest.JobName)
             </th>
@@ -42,15 +34,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VendorCharge)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MeterialDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaterialCost)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerJobRequest.JobName)
                 </td>
@@ -58,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.JobStatus.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Vendor.CompanyName)
+                    @Html.DisplayFor(modelItem => item.Vendor.name)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

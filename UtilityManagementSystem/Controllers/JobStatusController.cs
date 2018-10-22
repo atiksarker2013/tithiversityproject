@@ -17,7 +17,7 @@ namespace UtilityManagementSystem.Controllers
         // GET: JobStatus
         public ActionResult Index()
         {
-            return View(db.JobStatus.ToList());
+            return View(db.JobStatus.Where(m=>m.IsEnabled==true).ToList());
         }
 
         // GET: JobStatus/Details/5
@@ -46,11 +46,13 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] JobStatus jobStatus)
+        public ActionResult Create( JobStatus jobStatus)
         {
             if (ModelState.IsValid)
             {
+                jobStatus.IsEnabled = true;
                 db.JobStatus.Add(jobStatus);
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -78,7 +80,7 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] JobStatus jobStatus)
+        public ActionResult Edit(JobStatus jobStatus)
         {
             if (ModelState.IsValid)
             {
@@ -110,9 +112,19 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             JobStatus jobStatus = db.JobStatus.Find(id);
-            db.JobStatus.Remove(jobStatus);
+            jobStatus.IsEnabled = false;
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult DirectDelete(int id)
+
+        {
+            JobStatus jobstatus = db.JobStatus.Find(id);
+            
+            jobstatus.IsEnabled = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

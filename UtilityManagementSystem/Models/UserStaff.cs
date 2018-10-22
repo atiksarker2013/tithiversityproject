@@ -12,21 +12,19 @@ namespace UtilityManagementSystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StaffList
+    public partial class UserStaff
     {
-        public System.Guid PersonnelKey { get; set; }
-        public string PID { get; set; }
-        public string PName { get; set; }
-        public string Mobile { get; set; }
+        public int ID { get; set; }
+        public string name { get; set; }
+        public Nullable<int> Mobile { get; set; }
         public string Mail { get; set; }
         public string Designation { get; set; }
         public string Department { get; set; }
         public byte[] Pic { get; set; }
-        public string PicType { get; set; }
-        public Nullable<System.Guid> Usergr { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public Nullable<bool> IsUser { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
+        public string pictype { get; set; }
+        public string usergroup { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public Nullable<bool> isEnable { get; set; }
     }
 }

@@ -71,7 +71,7 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult VendorJob()
         {
-            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.VendorId== GlobalClass.LoginVendorUser.Id);
+            var job = db.Job.Where(m => m.VndorId == GlobalClass.LoginVendorUser.Id).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus);
             return View(job.ToList());
 
         }
@@ -149,7 +149,7 @@ namespace UtilityManagementSystem.Controllers
 
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m => m.JobStatusId == 1), "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
 
@@ -168,7 +168,7 @@ namespace UtilityManagementSystem.Controllers
             }
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
 
@@ -187,7 +187,7 @@ namespace UtilityManagementSystem.Controllers
             }
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
 
@@ -207,7 +207,7 @@ namespace UtilityManagementSystem.Controllers
 
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
 
@@ -226,7 +226,7 @@ namespace UtilityManagementSystem.Controllers
 
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VendorId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
 

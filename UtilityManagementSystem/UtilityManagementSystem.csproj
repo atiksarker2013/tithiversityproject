@@ -168,6 +168,12 @@
     <Compile Include="Models\Customer.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerInvoice.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerInvoiceDetail.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomerJobRequest.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -182,6 +188,12 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaffList.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserStaff.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UtilityManagementModel.Context.cs">
@@ -200,6 +212,12 @@
       <DependentUpon>UtilityManagementModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Vendor.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VendorInvoice.cs">
+      <DependentUpon>UtilityManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VndorInvoiceDetail.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -494,14 +512,21 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

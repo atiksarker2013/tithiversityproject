@@ -30,13 +30,13 @@ namespace UtilityManagementSystem.Models
         public Nullable<decimal> CustomerBudget { get; set; }
         public Nullable<System.DateTime> EntryDate { get; set; }
         public Nullable<System.DateTime> ScheduleDate { get; set; }
-        public Nullable<System.DateTime> ReturnScheduleDate { get; set; }
         public Nullable<int> JobStatusId { get; set; }
+        public Nullable<bool> IsJobCreated { get; set; }
     
         public virtual Customer Customer { get; set; }
-        public virtual JobStatus JobStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }
+        public virtual JobStatus JobStatus { get; set; }
         public virtual ServiceType ServiceType { get; set; }
     }
 }

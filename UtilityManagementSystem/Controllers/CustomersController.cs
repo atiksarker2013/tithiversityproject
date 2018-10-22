@@ -17,13 +17,13 @@ namespace UtilityManagementSystem.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customer.ToList());
+            return View(db.Customer.Where(m=>m.IsEnabled==true).ToList());
 
         }
 
         public ActionResult AllCustomerReport()
         {
-            return View(db.Customer.ToList());
+            return View(db.Customer.Where(m => m.IsEnabled == true).ToList());
 
         }
 
@@ -55,10 +55,11 @@ namespace UtilityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Mobile,Email,Address")] Customer customer)
+        public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
+                customer.IsEnabled = true;
                 db.Customer.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -89,7 +90,7 @@ namespace UtilityManagementSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Mobile,Email,Address")] Customer customer)
+        public ActionResult Edit( Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -123,12 +124,19 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Customer customer = db.Customer.Find(id);
-            db.Customer.Remove(customer);
+            customer.IsEnabled = false;
             db.SaveChanges();
             return RedirectToAction("Index");
 
         }
+        public ActionResult DirectDelete(int id)
+        {
+            Customer customer = db.Customer.Find(id);
+            customer.IsEnabled = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

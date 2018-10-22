@@ -21,12 +21,12 @@ namespace UtilityManagementSystem.Models
         }
     
         public int Id { get; set; }
-        public string CompanyName { get; set; }
-        public string ContactPerson { get; set; }
+        public string name { get; set; }
+        public string Mobile { get; set; }
         public string Email { get; set; }
-        public string Phone { get; set; }
         public string Address { get; set; }
-        public string TradeLisenceNumber { get; set; }
+        public string companyName { get; set; }
+        public Nullable<bool> IsEnabled { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }

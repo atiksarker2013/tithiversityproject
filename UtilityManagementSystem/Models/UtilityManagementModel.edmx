@@ -10,10 +10,34 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
           <Property Name="Mobile" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+          <Property Name="companyName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceKey" />
+          </Key>
+          <Property Name="InvoiceKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="WorkPerformed" Type="varchar(max)" />
+          <Property Name="JobKey" Type="int" />
+          <Property Name="CustomerKey" Type="int" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="IsPaid" Type="bit" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailKey" />
+          </Key>
+          <Property Name="InvoiceDetailKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceKey" Type="int" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="CustomerJobRequest">
           <Key>
@@ -29,20 +53,27 @@
           <Property Name="CustomerBudget" Type="decimal" Precision="18" Scale="2" />
           <Property Name="EntryDate" Type="datetime" />
           <Property Name="ScheduleDate" Type="datetime" />
-          <Property Name="ReturnScheduleDate" Type="datetime" />
           <Property Name="JobStatusId" Type="int" />
+          <Property Name="IsJobCreated" Type="bit" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VndorId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
           <Property Name="JobRequestId" Type="int" />
-          <Property Name="VendorId" Type="int" />
-          <Property Name="VendorCharge" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="MeterialDescription" Type="varchar(max)" />
-          <Property Name="MaterialCost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="JobName" Type="varchar" MaxLength="50" />
+          <Property Name="JobDescription" Type="varchar(max)" />
+          <Property Name="ServiceDescription" Type="int" />
           <Property Name="JobStatusId" Type="int" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="ScheduleDate" Type="datetime" />
+          <Property Name="VendorStartingDate" Type="datetime" />
+          <Property Name="VendorCompletionDate" Type="datetime" />
+          <Property Name="JobCompletedDate" Type="datetime" />
         </EntityType>
         <EntityType Name="JobStatus">
           <Key>
@@ -50,6 +81,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
         </EntityType>
         <EntityType Name="ServiceType">
           <Key>
@@ -57,6 +89,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceName" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
         </EntityType>
         <EntityType Name="StaffList">
           <Key>
@@ -71,24 +104,72 @@
           <Property Name="Department" Type="nvarchar(max)" />
           <Property Name="Pic" Type="image" />
           <Property Name="PicType" Type="nvarchar(max)" />
-          <Property Name="CompanyKey" Type="uniqueidentifier" />
           <Property Name="Usergr" Type="uniqueidentifier" />
           <Property Name="Username" Type="nvarchar(max)" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="IsUser" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserStaff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="int" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="Designation" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Pic" Type="image" />
+          <Property Name="pictype" Type="varchar" MaxLength="50" />
+          <Property Name="usergroup" Type="varchar" MaxLength="50" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="isEnable" Type="bit" />
+        </EntityType>
         <EntityType Name="Vendor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
-          <Property Name="ContactPerson" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
-          <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Address" Type="varchar" MaxLength="50" />
-          <Property Name="TradeLisenceNumber" Type="varchar" MaxLength="50" />
+          <Property Name="companyName" Type="varchar" MaxLength="50" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="VendorInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceKey" />
+          </Key>
+          <Property Name="InvoiceKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="WorkPerformed" Type="varchar(max)" />
+          <Property Name="JobKey" Type="int" />
+          <Property Name="VendorKey" Type="int" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="IsPaid" Type="bit" />
+        </EntityType>
+        <EntityType Name="VndorInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailKey" />
+          </Key>
+          <Property Name="InvoiceDetailKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceKey" Type="int" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_CustomerJobRequest_JobStatus">
           <End Role="JobStatus" Type="Self.JobStatus" Multiplicity="0..1" />
@@ -122,7 +203,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Job">
-              <PropertyRef Name="JobRequestId" />
+              <PropertyRef Name="VndorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -134,7 +215,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Job">
-              <PropertyRef Name="JobStatusId" />
+              <PropertyRef Name="ServiceDescription" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,18 +239,24 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Job">
-              <PropertyRef Name="VendorId" />
+              <PropertyRef Name="CustomerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UtilityManagementDBModelStoreContainer">
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInvoice" EntityType="Self.CustomerInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInvoiceDetail" EntityType="Self.CustomerInvoiceDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerJobRequest" EntityType="Self.CustomerJobRequest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobStatus" EntityType="Self.JobStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StaffList" EntityType="Self.StaffList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStaff" EntityType="Self.UserStaff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorInvoice" EntityType="Self.VendorInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VndorInvoiceDetail" EntityType="Self.VndorInvoiceDetail" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="Self.FK_CustomerJobRequest_JobStatus">
             <End Role="JobStatus" EntitySet="JobStatus" />
             <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
@@ -201,23 +288,33 @@
       <Schema Namespace="UtilityManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="UtilityManagementDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Customer" EntityType="UtilityManagementDBModel.Customer" />
+          <EntitySet Name="CustomerInvoice" EntityType="UtilityManagementDBModel.CustomerInvoice" />
+          <EntitySet Name="CustomerInvoiceDetail" EntityType="UtilityManagementDBModel.CustomerInvoiceDetail" />
           <EntitySet Name="CustomerJobRequest" EntityType="UtilityManagementDBModel.CustomerJobRequest" />
           <EntitySet Name="Job" EntityType="UtilityManagementDBModel.Job" />
-          <EntitySet Name="JobStatus" EntityType="UtilityManagementDBModel.JobStatus" />
-          <EntitySet Name="ServiceType" EntityType="UtilityManagementDBModel.ServiceType" />
           <EntitySet Name="StaffList" EntityType="UtilityManagementDBModel.StaffList" />
+          <EntitySet Name="sysdiagrams" EntityType="UtilityManagementDBModel.sysdiagrams" />
+          <EntitySet Name="UserStaff" EntityType="UtilityManagementDBModel.UserStaff" />
           <EntitySet Name="Vendor" EntityType="UtilityManagementDBModel.Vendor" />
+          <EntitySet Name="VendorInvoice" EntityType="UtilityManagementDBModel.VendorInvoice" />
+          <EntitySet Name="VndorInvoiceDetail" EntityType="UtilityManagementDBModel.VndorInvoiceDetail" />
           <AssociationSet Name="FK_Job_Customer" Association="UtilityManagementDBModel.FK_Job_Customer">
             <End Role="Customer" EntitySet="Customer" />
-            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus">
-            <End Role="JobStatus" EntitySet="JobStatus" />
             <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_Job_CustomerJobRequest" Association="UtilityManagementDBModel.FK_Job_CustomerJobRequest">
             <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
             <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_Vendor" Association="UtilityManagementDBModel.FK_Job_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <EntitySet Name="JobStatus" EntityType="UtilityManagementDBModel.JobStatus" />
+          <EntitySet Name="ServiceType" EntityType="UtilityManagementDBModel.ServiceType" />
+          <AssociationSet Name="FK_CustomerJobRequest_JobStatus" Association="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus">
+            <End Role="JobStatus" EntitySet="JobStatus" />
+            <End Role="CustomerJobRequest" EntitySet="CustomerJobRequest" />
           </AssociationSet>
           <AssociationSet Name="FK_Job_ServiceType" Association="UtilityManagementDBModel.FK_Job_ServiceType">
             <End Role="ServiceType" EntitySet="ServiceType" />
@@ -227,21 +324,41 @@
             <End Role="JobStatus" EntitySet="JobStatus" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK_Job_Vendor" Association="UtilityManagementDBModel.FK_Job_Vendor">
-            <End Role="Vendor" EntitySet="Vendor" />
-            <End Role="Job" EntitySet="Job" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Mobile" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_Customer" FromRole="Customer" ToRole="CustomerJobRequest" />
+        </EntityType>
+        <EntityType Name="CustomerInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceKey" />
+          </Key>
+          <Property Name="InvoiceKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="WorkPerformed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobKey" Type="Int32" />
+          <Property Name="CustomerKey" Type="Int32" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="IsPaid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailKey" />
+          </Key>
+          <Property Name="InvoiceDetailKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceKey" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="CustomerJobRequest">
           <Key>
@@ -257,11 +374,11 @@
           <Property Name="CustomerBudget" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="EntryDate" Type="DateTime" Precision="3" />
           <Property Name="ScheduleDate" Type="DateTime" Precision="3" />
-          <Property Name="ReturnScheduleDate" Type="DateTime" Precision="3" />
           <Property Name="JobStatusId" Type="Int32" />
+          <Property Name="IsJobCreated" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="UtilityManagementDBModel.FK_Job_Customer" FromRole="CustomerJobRequest" ToRole="Customer" />
-          <NavigationProperty Name="JobStatus" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="CustomerJobRequest" ToRole="JobStatus" />
           <NavigationProperty Name="Job" Relationship="UtilityManagementDBModel.FK_Job_CustomerJobRequest" FromRole="CustomerJobRequest" ToRole="Job" />
+          <NavigationProperty Name="JobStatus" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="CustomerJobRequest" ToRole="JobStatus" />
           <NavigationProperty Name="ServiceType" Relationship="UtilityManagementDBModel.FK_Job_ServiceType" FromRole="CustomerJobRequest" ToRole="ServiceType" />
         </EntityType>
         <EntityType Name="Job">
@@ -269,32 +386,22 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VndorId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
           <Property Name="JobRequestId" Type="Int32" />
-          <Property Name="VendorId" Type="Int32" />
-          <Property Name="VendorCharge" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="MeterialDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="MaterialCost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServiceDescription" Type="Int32" />
           <Property Name="JobStatusId" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="ScheduleDate" Type="DateTime" Precision="3" />
+          <Property Name="VendorStartingDate" Type="DateTime" Precision="3" />
+          <Property Name="VendorCompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="JobCompletedDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_CustomerJobRequest" FromRole="Job" ToRole="CustomerJobRequest" />
-          <NavigationProperty Name="JobStatus" Relationship="UtilityManagementDBModel.FK_Job_JobStatus" FromRole="Job" ToRole="JobStatus" />
           <NavigationProperty Name="Vendor" Relationship="UtilityManagementDBModel.FK_Job_Vendor" FromRole="Job" ToRole="Vendor" />
-        </EntityType>
-        <EntityType Name="JobStatus">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="JobStatus" ToRole="CustomerJobRequest" />
-          <NavigationProperty Name="Job" Relationship="UtilityManagementDBModel.FK_Job_JobStatus" FromRole="JobStatus" ToRole="Job" />
-        </EntityType>
-        <EntityType Name="ServiceType">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_ServiceType" FromRole="ServiceType" ToRole="CustomerJobRequest" />
+          <NavigationProperty Name="JobStatus" Relationship="UtilityManagementDBModel.FK_Job_JobStatus" FromRole="Job" ToRole="JobStatus" />
         </EntityType>
         <EntityType Name="StaffList">
           <Key>
@@ -309,25 +416,73 @@
           <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="PicType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CompanyKey" Type="Guid" />
           <Property Name="Usergr" Type="Guid" />
           <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsUser" Type="Boolean" />
           <Property Name="IsDelete" Type="Boolean" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserStaff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="Int32" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="pictype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usergroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isEnable" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Vendor">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TradeLisenceNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
           <NavigationProperty Name="Job" Relationship="UtilityManagementDBModel.FK_Job_Vendor" FromRole="Vendor" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="VendorInvoice">
+          <Key>
+            <PropertyRef Name="InvoiceKey" />
+          </Key>
+          <Property Name="InvoiceKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="WorkPerformed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JobKey" Type="Int32" />
+          <Property Name="VendorKey" Type="Int32" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="IsPaid" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="VndorInvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailKey" />
+          </Key>
+          <Property Name="InvoiceDetailKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceKey" Type="Int32" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK_Job_Customer">
           <End Type="UtilityManagementDBModel.Customer" Role="Customer" Multiplicity="0..1" />
@@ -341,6 +496,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Job_CustomerJobRequest">
+          <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="0..1" />
+          <End Type="UtilityManagementDBModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerJobRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="VndorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Job_Vendor">
+          <End Type="UtilityManagementDBModel.Vendor" Role="Vendor" Multiplicity="0..1" />
+          <End Type="UtilityManagementDBModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_CustomerJobRequest_JobStatus" FromRole="JobStatus" ToRole="CustomerJobRequest" />
+          <NavigationProperty Name="Job" Relationship="UtilityManagementDBModel.FK_Job_JobStatus" FromRole="JobStatus" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <NavigationProperty Name="CustomerJobRequest" Relationship="UtilityManagementDBModel.FK_Job_ServiceType" FromRole="ServiceType" ToRole="CustomerJobRequest" />
+        </EntityType>
         <Association Name="FK_CustomerJobRequest_JobStatus">
           <End Type="UtilityManagementDBModel.JobStatus" Role="JobStatus" Multiplicity="0..1" />
           <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="*" />
@@ -350,18 +548,6 @@
             </Principal>
             <Dependent Role="CustomerJobRequest">
               <PropertyRef Name="JobStatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Job_CustomerJobRequest">
-          <End Type="UtilityManagementDBModel.CustomerJobRequest" Role="CustomerJobRequest" Multiplicity="0..1" />
-          <End Type="UtilityManagementDBModel.Job" Role="Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CustomerJobRequest">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Job">
-              <PropertyRef Name="JobRequestId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -385,19 +571,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Job">
-              <PropertyRef Name="JobStatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Job_Vendor">
-          <End Type="UtilityManagementDBModel.Vendor" Role="Vendor" Multiplicity="0..1" />
-          <End Type="UtilityManagementDBModel.Job" Role="Job" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vendor">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Job">
-              <PropertyRef Name="VendorId" />
+              <PropertyRef Name="ServiceDescription" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -410,19 +584,45 @@
           <EntitySetMapping Name="Customer">
             <EntityTypeMapping TypeName="UtilityManagementDBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInvoice">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.CustomerInvoice">
+              <MappingFragment StoreEntitySet="CustomerInvoice">
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+                <ScalarProperty Name="JobKey" ColumnName="JobKey" />
+                <ScalarProperty Name="WorkPerformed" ColumnName="WorkPerformed" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="InvoiceKey" ColumnName="InvoiceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInvoiceDetail">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.CustomerInvoiceDetail">
+              <MappingFragment StoreEntitySet="CustomerInvoiceDetail">
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="InvoiceKey" ColumnName="InvoiceKey" />
+                <ScalarProperty Name="InvoiceDetailKey" ColumnName="InvoiceDetailKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerJobRequest">
             <EntityTypeMapping TypeName="UtilityManagementDBModel.CustomerJobRequest">
               <MappingFragment StoreEntitySet="CustomerJobRequest">
+                <ScalarProperty Name="IsJobCreated" ColumnName="IsJobCreated" />
                 <ScalarProperty Name="JobStatusId" ColumnName="JobStatusId" />
-                <ScalarProperty Name="ReturnScheduleDate" ColumnName="ReturnScheduleDate" />
                 <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
                 <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
                 <ScalarProperty Name="CustomerBudget" ColumnName="CustomerBudget" />
@@ -439,28 +639,19 @@
           <EntitySetMapping Name="Job">
             <EntityTypeMapping TypeName="UtilityManagementDBModel.Job">
               <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="JobCompletedDate" ColumnName="JobCompletedDate" />
+                <ScalarProperty Name="VendorCompletionDate" ColumnName="VendorCompletionDate" />
+                <ScalarProperty Name="VendorStartingDate" ColumnName="VendorStartingDate" />
+                <ScalarProperty Name="ScheduleDate" ColumnName="ScheduleDate" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="JobStatusId" ColumnName="JobStatusId" />
-                <ScalarProperty Name="MaterialCost" ColumnName="MaterialCost" />
-                <ScalarProperty Name="MeterialDescription" ColumnName="MeterialDescription" />
-                <ScalarProperty Name="VendorCharge" ColumnName="VendorCharge" />
-                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ServiceDescription" ColumnName="ServiceDescription" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
                 <ScalarProperty Name="JobRequestId" ColumnName="JobRequestId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="JobStatus">
-            <EntityTypeMapping TypeName="UtilityManagementDBModel.JobStatus">
-              <MappingFragment StoreEntitySet="JobStatus">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServiceType">
-            <EntityTypeMapping TypeName="UtilityManagementDBModel.ServiceType">
-              <MappingFragment StoreEntitySet="ServiceType">
-                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="VndorId" ColumnName="VndorId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -473,7 +664,6 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Usergr" ColumnName="Usergr" />
-                <ScalarProperty Name="CompanyKey" ColumnName="CompanyKey" />
                 <ScalarProperty Name="PicType" ColumnName="PicType" />
                 <ScalarProperty Name="Pic" ColumnName="Pic" />
                 <ScalarProperty Name="Department" ColumnName="Department" />
@@ -486,15 +676,86 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStaff">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.UserStaff">
+              <MappingFragment StoreEntitySet="UserStaff">
+                <ScalarProperty Name="isEnable" ColumnName="isEnable" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="usergroup" ColumnName="usergroup" />
+                <ScalarProperty Name="pictype" ColumnName="pictype" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Vendor">
             <EntityTypeMapping TypeName="UtilityManagementDBModel.Vendor">
               <MappingFragment StoreEntitySet="Vendor">
-                <ScalarProperty Name="TradeLisenceNumber" ColumnName="TradeLisenceNumber" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorInvoice">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.VendorInvoice">
+              <MappingFragment StoreEntitySet="VendorInvoice">
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="VendorKey" ColumnName="VendorKey" />
+                <ScalarProperty Name="JobKey" ColumnName="JobKey" />
+                <ScalarProperty Name="WorkPerformed" ColumnName="WorkPerformed" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="InvoiceKey" ColumnName="InvoiceKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VndorInvoiceDetail">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.VndorInvoiceDetail">
+              <MappingFragment StoreEntitySet="VndorInvoiceDetail">
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="InvoiceKey" ColumnName="InvoiceKey" />
+                <ScalarProperty Name="InvoiceDetailKey" ColumnName="InvoiceDetailKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobStatus">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.JobStatus">
+              <MappingFragment StoreEntitySet="JobStatus">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceType">
+            <EntityTypeMapping TypeName="UtilityManagementDBModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
