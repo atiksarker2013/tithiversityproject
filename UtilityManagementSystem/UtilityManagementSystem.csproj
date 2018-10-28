@@ -184,6 +184,7 @@
     <Compile Include="Models\JobStatus.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\JobViewClass.cs" />
     <Compile Include="Models\ServiceType.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>

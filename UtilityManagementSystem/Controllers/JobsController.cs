@@ -99,12 +99,18 @@ namespace UtilityManagementSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Job job = db.Job.Find(id);
+            JobViewClass model = new JobViewClass();
+            model.JobDescription = job.JobDescription;
+            model.VendorName = job.Vendor.name;
+            model.CompanyName = job.Vendor.companyName;
+            model.JobRequestId = job.JobRequestId;
+            model.JobStatusId = job.JobStatus.Name;
             if (job == null)
             {
                 return HttpNotFound();
             }
 
-            return View(job);
+            return View(model);
         }
 
         public ActionResult VendorJobDetails(int? id)
@@ -127,7 +133,9 @@ namespace UtilityManagementSystem.Controllers
         {
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m=>m.JobStatusId==1), "Id", "JobName");
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name");
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName");
+            ViewBag.VndorId = new SelectList(db.Vendor.Where(m=>m.IsEnabled==true), "Id", "companyName");
+            ViewBag.CustomerId = new SelectList(db.Customer,"Id","name");
+            ViewBag.ServiceDescription= new SelectList(db.ServiceType ,"Id", "ServiceName");
             return View();
 
         }
@@ -137,10 +145,13 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,JobRequestId,VendorId,VendorCharge,MeterialDescription,MaterialCost,JobStatusId")] Job job)
+        public ActionResult Create( Job job)
         {
             if (ModelState.IsValid)
             {
+                job.EntryDate = System.DateTime.Now;
+                CustomerJobRequest req = db.CustomerJobRequest.Find(job.JobRequestId);
+                job.CustomerId = req.CustomerId;
                 db.Job.Add(job);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -149,7 +160,10 @@ namespace UtilityManagementSystem.Controllers
 
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m => m.JobStatusId == 1), "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
+            ViewBag.VndorId = new SelectList(db.Vendor.Where(m => m.IsEnabled == true), "Id", "companyName",job.VndorId);
+            ViewBag.ServiceDescription = new SelectList(db.ServiceType, "Id", "ServiceName",job.ServiceDescription);
+           // ViewBag.CustomerId = new SelectList(db.Customer, "Id", "name",job.CustomerId);
+
             return View(job);
         }
 
@@ -169,6 +183,7 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
+            ViewBag.ServiceDescription = new SelectList(db.ServiceType, "Id", "ServiceName",job.ServiceDescription);
             return View(job);
         }
 
@@ -196,11 +211,13 @@ namespace UtilityManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,JobRequestId,VendorId,VendorCharge,MeterialDescription,MaterialCost,JobStatusId")] Job job)
+        public ActionResult Edit(Job job)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(job).State = EntityState.Modified;
+                //Job model = db.Job.Find(job.Id);
+                //model.JobName = job.JobName;
+               db.Entry(job).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -1,4 +1,4 @@
-﻿@model UtilityManagementSystem.Models.Job
+﻿@model UtilityManagementSystem.Models.JobViewClass
 
 @{
     ViewBag.Title = "Details";
@@ -12,11 +12,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.VendorCharge)
+           <label>Customer Name</label>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VendorCharge)
+            @Html.DisplayFor(model => model.CustomerName)
         </dd>
 
         <dt>

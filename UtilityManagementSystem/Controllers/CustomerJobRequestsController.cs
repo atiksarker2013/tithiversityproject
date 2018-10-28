@@ -119,20 +119,26 @@ namespace UtilityManagementSystem.Controllers
         {
             ViewBag.message = "";
             if (ModelState.IsValid)
+         
             {
-                if (customerJobRequest.EntryDate > customerJobRequest.ScheduleDate)
+                if (customerJobRequest.EntryDate == DateTime.Today)
                 {
-                    ViewBag.message = "Invalid Date. Please enter then dates properly";
+                    if (customerJobRequest.EntryDate > customerJobRequest.ScheduleDate)
+                    {
+                        ViewBag.message = "Invalid Date. Please enter then dates properly";
+                    }
+                    else
+                    {
+                        db.CustomerJobRequest.Add(customerJobRequest);
+                        db.SaveChanges();
+                        ViewBag.message = "Thank you we will give you feedback soon";
+
+
+                        //return RedirectToAction("CustomerJobRequest");
+                    }
                 }
-                else
-                {
-                    db.CustomerJobRequest.Add(customerJobRequest);
-                    db.SaveChanges();
-                    ViewBag.message = "Thank you we will give you feedback soon";
-                    
-                   
-                    //return RedirectToAction("CustomerJobRequest");
-                    
+                    else {
+                    ViewBag.message = "Please Enter Todays Date...Your Entry date is not valid";
                 }
                
             }

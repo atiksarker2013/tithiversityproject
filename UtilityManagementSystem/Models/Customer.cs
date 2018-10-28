@@ -18,6 +18,7 @@ namespace UtilityManagementSystem.Models
         public Customer()
         {
             this.CustomerJobRequest = new HashSet<CustomerJobRequest>();
+            this.Job = new HashSet<Job>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace UtilityManagementSystem.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerJobRequest> CustomerJobRequest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Job> Job { get; set; }
     }
 }
