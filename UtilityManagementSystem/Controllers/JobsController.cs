@@ -20,37 +20,71 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult Index()
         {
 
-            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.JobStatusId!=9);
             return View(job.ToList());
         }
 
-        public ActionResult SendJobDetailsToVendorReport()
+        //vendor job list
+        public ActionResult VIndex()
         {
 
-            var job = db.Job.Where(m => m.JobStatusId == 2).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            var job = db.Job.Where(m => m.JobStatusId != 9 && m.JobStatusId>0 && m.JobStatusId<6 && m.VndorId==GlobalClass.LoginVendorUser.Id);
             return View(job.ToList());
         }
-
-        public ActionResult VendorAcceptEstimateReport()
+        //vendor job  detail
+        public ActionResult vendorDetails(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Job job = db.Job.Find(id);
+            JobViewClass model = new JobViewClass();
+            model.JobDescription = job.JobDescription;
+            model.VendorName = job.Vendor.name;
+            model.CompanyName = job.Vendor.companyName;
+            model.JobRequestId = job.JobRequestId;
+            model.JobStatusId = job.JobStatus.Name;
+            model.Remark = job.Remark;
+            model.EntryDate = job.CustomerJobRequest.EntryDate;
+            model.ScheduleDate = job.CustomerJobRequest.ScheduleDate;
+            model.VendorStartingDate = job.VendorStartingDate;
+            model.VendorCompletionDate = job.VendorCompletionDate;
+            model.JobCompletedDate = job.JobCompletedDate;
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
 
-            var job = db.Job.Where(m => m.JobStatusId == 3).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
-            return View(job.ToList());
+            return View(model);
         }
+        //public ActionResult SendJobDetailsToVendorReport()
+        //{
 
-        public ActionResult VendorJobCompleteReport()
-        {
+        //    var job = db.Job.Where(m => m.JobStatusId == 2).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+        //    return View(job.ToList());
+        //}
 
-            var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
-            return View(job.ToList());
-        }
+        //public ActionResult VendorAcceptEstimateReport()
+        //{
 
-        public ActionResult VendorStartWorkReport()
-        {
+        //    var job = db.Job.Where(m => m.JobStatusId == 3).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+        //    return View(job.ToList());
+        //}
 
-            var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
-            return View(job.ToList());
-        }
+        //public ActionResult VendorJobCompleteReport()
+        //{
+
+        //    var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+        //    return View(job.ToList());
+        //}
+
+        //public ActionResult VendorStartWorkReport()
+        //{
+
+        //    var job = db.Job.Where(m => m.JobStatusId == 4).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+        //    return View(job.ToList());
+        //}
 
         public ActionResult CompletedJob()
         {
@@ -60,13 +94,13 @@ namespace UtilityManagementSystem.Controllers
 
         }
 
-        public ActionResult PaymentReceive()
-        {
+        //public ActionResult PaymentReceive()
+        //{
 
-            var job = db.Job.Where(m => m.JobStatusId == 6).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
-            return View(job.ToList());
+        //    var job = db.Job.Where(m => m.JobStatusId == 6).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+        //    return View(job.ToList());
 
-        }
+        //}
 
 
         public ActionResult VendorJob()
@@ -92,6 +126,7 @@ namespace UtilityManagementSystem.Controllers
         }
 
         // GET: Jobs/Details/5
+        //Customer job details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -105,6 +140,39 @@ namespace UtilityManagementSystem.Controllers
             model.CompanyName = job.Vendor.companyName;
             model.JobRequestId = job.JobRequestId;
             model.JobStatusId = job.JobStatus.Name;
+            model.Remark = job.Remark;
+            model.EntryDate = job.CustomerJobRequest.EntryDate;
+            model.ScheduleDate = job.CustomerJobRequest.ScheduleDate;
+            model.VendorStartingDate = job.VendorStartingDate;
+            model.VendorCompletionDate = job.VendorCompletionDate;
+            model.JobCompletedDate = job.JobCompletedDate;
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(model);
+        }
+
+        public ActionResult CDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Job job = db.Job.Find(id);
+            JobViewClass model = new JobViewClass();
+            model.JobDescription = job.JobDescription;
+            model.VendorName = job.Vendor.name;
+            model.CompanyName = job.Vendor.companyName;
+            model.JobRequestId = job.JobRequestId;
+            model.JobStatusId = job.JobStatus.Name;
+            model.Remark = job.Remark;
+            model.EntryDate = job.CustomerJobRequest.EntryDate;
+            model.ScheduleDate = job.CustomerJobRequest.ScheduleDate;
+            model.VendorStartingDate = job.VendorStartingDate;
+            model.VendorCompletionDate = job.VendorCompletionDate;
+            model.JobCompletedDate = job.JobCompletedDate;
             if (job == null)
             {
                 return HttpNotFound();
@@ -129,6 +197,7 @@ namespace UtilityManagementSystem.Controllers
         }
 
         // GET: Jobs/Create
+        //admin creat job for vendor
         public ActionResult Create()
         {
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest.Where(m=>m.JobStatusId==1), "Id", "JobName");

@@ -21,6 +21,12 @@ namespace UtilityManagementSystem.Controllers
             return View(customerJobRequest.ToList());
 
         }
+        public ActionResult CustomerRequestIndex()
+        {
+
+            var customerJob = db.Job.Where(m =>m.JobStatusId > 0 && m.JobStatusId < 6 && m.CustomerId == GlobalClass.LoginCustomerUser.Id);
+            return View(customerJob.ToList());
+        }
 
         public ActionResult AllNewJobRequest()
         {
@@ -40,6 +46,20 @@ namespace UtilityManagementSystem.Controllers
 
         // GET: CustomerJobRequests/Details/5
         public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            CustomerJobRequest customerJobRequest = db.CustomerJobRequest.Find(id);
+            if (customerJobRequest == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customerJobRequest);
+        }
+        public ActionResult CDetails(int? id)
         {
             if (id == null)
             {

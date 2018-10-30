@@ -1,0 +1,86 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.Job>
+
+@{
+    ViewBag.Title = "VIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VIndex</h2>
+
+
+<table class="table">
+    <tr>
+       
+        <th>
+            <label>Job Name</label>
+        </th>
+        <th>
+            <label>Job Description</label>
+        </th>
+
+        <th>
+            <label>Vendor name</label>
+        </th>
+
+        <th>
+            <label>Schedule Date</label>
+        </th>
+
+        <th>
+            <label> VendorCompletionDate </label>
+        </th>
+
+
+
+        <th>
+            <label>Invoice</label>
+        </th>
+        <th>
+            <label>Service Type</label>
+        </th>
+      
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDescription)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor.name)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleDate)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.VendorCompletionDate)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.JobStatus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceType.ServiceName)
+            </td>
+
+         
+            <td>
+
+                @Html.ActionLink("Details", "CDetails","Jobs", new { id = item.Id },null) |
+
+            </td>
+        </tr>
+    }
+
+</table>

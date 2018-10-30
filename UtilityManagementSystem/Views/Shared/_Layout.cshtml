@@ -58,45 +58,67 @@
 
                         @{
 
-        if (GlobalClass.LoginUser != null)
-        {
+                            if (GlobalClass.LoginUser != null)
+                            {
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "Vendors")"><i class="fa fa-dashboard "></i>Vendor</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Vendors")"><i class="fa fa-dashboard "></i>Vendor</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Customers")"><i class="fa fa-dashboard "></i>Customer</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "ServiceTypes")"><i class="fa fa-dashboard "></i>Service Types</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "JobStatus")"><i class="fa fa-dashboard "></i>Job Status</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "JobStatus")"><i class="fa fa-dashboard "></i>Job Status</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>New Job Request</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>New Job Request</a>
+                                </li>
 
-                   <li class="me">
-                        <a href="@Url.Action("Index", "Jobs")"><i class="fa fa-dashboard "></i>Job On Process</a>
-                    </li>
-                    <li class="me">
-                        <a href="@Url.Action("CompletedJob", "Jobs")"><i class="fa fa-dashboard "></i>Completed Job</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "Jobs")"><i class="fa fa-dashboard "></i>Job On Process</a>
+                                </li>
+                                <li class="me">
+                                    <a href="@Url.Action("CompletedJob", "Jobs")"><i class="fa fa-dashboard "></i>Completed Job</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("PaymentReceive", "Jobs")"><i class="fa fa-dashboard "></i>Payment Receive</a>
-                    </li>
+                                <li class="me">
+                                    <a href="@Url.Action("PaymentReceive", "Jobs")"><i class="fa fa-dashboard "></i>Payment Receive</a>
+                                </li>
 
-                    <li class="me">
-                        <a href="@Url.Action("Index", "UtilityReport")"><i class="fa fa-dashboard "></i>Report</a>
-                    </li>
-                           
-                        }
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "UtilityReport")"><i class="fa fa-dashboard "></i>Report</a>
+                                </li>
+
+                            }
+                            if (GlobalClass.LoginVendorUser != null)
+                            {
+
+                                <li class="me">
+                                    <a href="@Url.Action("VIndex", "Jobs")"><i class="fa fa-dashboard "></i>Jobs</a>
+                                </li>
+
+
+
+                            }
+                            if (GlobalClass.LoginCustomerUser != null)
+                            {
+
+                                <li class="me">
+                                    <a href="@Url.Action("Index", "CustomerJobRequests")"><i class="fa fa-dashboard "></i>Customer Job Request</a>
+                                </li>
+
+                                <li class="me">
+                                    <a href="@Url.Action("CustomerRequestIndex", "CustomerJobRequests")"><i class="fa fa-dashboard "></i> Job </a>
+                                </li>
+
+                            }
 
                         }
 

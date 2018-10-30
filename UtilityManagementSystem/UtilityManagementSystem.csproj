@@ -598,6 +598,11 @@
     <Content Include="Views\Jobs\VendorAcceptEstimateReport.cshtml" />
     <Content Include="Views\Jobs\VendorStartWorkReport.cshtml" />
     <Content Include="Views\Jobs\VendorJobCompleteReport.cshtml" />
+    <Content Include="Views\Jobs\VIndex.cshtml" />
+    <Content Include="Views\Jobs\vendorDetails.cshtml" />
+    <Content Include="Views\CustomerJobRequests\CustomerRequestIndex.cshtml" />
+    <Content Include="Views\CustomerJobRequests\CDetails.cshtml" />
+    <Content Include="Views\Jobs\CDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
