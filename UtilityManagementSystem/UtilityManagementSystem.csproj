@@ -603,6 +603,7 @@
     <Content Include="Views\CustomerJobRequests\CustomerRequestIndex.cshtml" />
     <Content Include="Views\CustomerJobRequests\CDetails.cshtml" />
     <Content Include="Views\Jobs\CDetails.cshtml" />
+    <Content Include="Views\Jobs\JobProcessEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

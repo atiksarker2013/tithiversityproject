@@ -89,7 +89,7 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult CompletedJob()
         {
 
-            var job = db.Job.Where(m=>m.JobStatusId==5).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
+            var job = db.Job.Where(m=>m.JobStatusId==8).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor);
             return View(job.ToList());
 
         }
@@ -296,12 +296,30 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
+        //Admin job on Process Edit view
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult JobProcessEdit(int? id)
+        {
+            Job job = db.Job.Find(id);
+            if (ModelState.IsValid)
+            {
+                db.Entry(job).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
+            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
+            return View(job);
+        }
 
+        //Admin Completed job Edit view
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult VendorEdit([Bind(Include = "Id,JobRequestId,VendorId,VendorCharge,MeterialDescription,MaterialCost,JobStatusId")] Job job)
+        public ActionResult VendorEdit( Job job)
         {
             if (ModelState.IsValid)
             {
@@ -333,6 +351,7 @@ namespace UtilityManagementSystem.Controllers
         }
 
         // POST: Jobs/Delete/5
+        // Admin Completed job Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -340,9 +359,10 @@ namespace UtilityManagementSystem.Controllers
             Job job = db.Job.Find(id);
             db.Job.Remove(job);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("CompletedJob");
 
         }
+
 
         protected override void Dispose(bool disposing)
         {

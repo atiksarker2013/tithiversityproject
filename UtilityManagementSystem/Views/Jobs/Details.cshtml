@@ -4,105 +4,110 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@*.dl{
+   width:auto;
+   margin-left:auto;
+   display:inline-block;
+
+
+}*@
 
 <h2>Details</h2>
 
 <div>
-    <h4>Job</h4>
+    <h4>All Completed job Details </h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <label>Customer Name</label>
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerName)
-        </dd>
+    <div table class="table table-bordered table-responsive table-hover" style="overflow:hidden";"width:auto">
+        <dl class="dl-horizontal">
+            <dt>
+                <label>Customer Name</label>
+            </dt>
 
-        <dt>
-            <label>Vendor Name</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CustomerName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.VendorName)
-        </dd>
+            <dt>
+                <label>Vendor Name</label>
+            </dt>
 
-        <dt>
-            <label>Company Name</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VendorName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
+            <dt>
+                <label>Company Name</label>
+            </dt>
 
-        <dt>
-            <label>Job Request</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CompanyName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.JobName)
-        </dd>
+            <dt>
+                <label>Job Request</label>
+            </dt>
 
-        <dt>
-            <label>Job Description</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.JobDescription)
-        </dd>
+            <dt>
+                <label>Job Description</label>
+            </dt>
 
-        <dt>
-            <label>Service Description</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobDescription)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServiceDescription)
-        </dd>
-        <dt>
-            <label>Job Status</label>
-        </dt>
+            <dt>
+                <label>Service Description</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.JobStatusId)
-        </dd>
-        <dt>
-            <label>Entry Date</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ServiceDescription)
+            </dd>
+            <dt>
+                <label>Job Status</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EntryDate)
-        </dd>
-        <dt>
-            <label>Schedule Date</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.JobStatusId)
+            </dd>
+            <dt>
+                <label>Entry Date</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ScheduleDate)
-        </dd>
-        <dt>
-            <label>Vendor starting date</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EntryDate)
+            </dd>
+            <dt>
+                <label>Schedule Date</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VendorStartingDate)
-        </dd>
-        <dt>
-            <label>Vendor completed date</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduleDate)
+            </dd>
+            <dt>
+               <label>job starting date</label>
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VendorCompletionDate)
-        </dd>
-        <dt>
-            <label>job completed date</label>
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VendorStartingDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.JobCompletedDate)
-        </dd>
-    </dl>
+            <dt>
+                <label>job completed date</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JobCompletedDate)
+            </dd>
+        </dl>
+    </div>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+   
+    @Html.ActionLink("Back to List", "CompletedJob","Jobs")
 </p>
