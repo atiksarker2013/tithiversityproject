@@ -162,6 +162,7 @@
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="Controllers\UtilityReportController.cs" />
+    <Compile Include="Controllers\VendorInvoiceController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,6 +221,7 @@
     <Compile Include="Models\VendorInvoice.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\VendorItemList.cs" />
     <Compile Include="Models\VndorInvoiceDetail.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -533,6 +535,7 @@
     <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="SQL SCRIPT\11-7-2018.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -611,6 +614,9 @@
     <Content Include="Views\CustomerInvoice\Create.cshtml" />
     <Content Include="Views\CustomerInvoice\Details.cshtml" />
     <Content Include="Views\CustomerInvoice\Edit.cshtml" />
+    <Content Include="Views\VendorInvoice\JobListForInvoice.cshtml" />
+    <Content Include="Views\VendorInvoice\InvoiceList.cshtml" />
+    <Content Include="Views\VendorInvoice\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

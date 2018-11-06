@@ -123,5 +123,25 @@ namespace UtilityManagementSystem.Models
                 HttpContext.Current.Session[GlobalClass._LoginVendorUser] = value;
             }
         }
+
+        static private string _VendorItem = "VendorItem";
+        public static List<VendorItemList> VendorItem
+        {
+            get
+            {
+                if (HttpContext.Current.Session[GlobalClass._VendorItem] == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (List<VendorItemList>)(HttpContext.Current.Session[GlobalClass._VendorItem]);
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session[GlobalClass._VendorItem] = value;
+            }
+        }
     }
 }
