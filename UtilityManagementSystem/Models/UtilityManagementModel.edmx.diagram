@@ -6,15 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bc34f3658007497f9b1d99e611064162" Name="Diagram1" ZoomLevel="90">
         <EntityTypeShape EntityType="UtilityManagementDBModel.Customer" Width="1.5" PointX="0.75" PointY="7.875" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerInvoice" Width="1.5" PointX="5.75" PointY="6.75" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerInvoiceDetail" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerJobRequest" Width="1.5" PointX="3" PointY="1.125" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.StaffList" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="8.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.UserStaff" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.Vendor" Width="1.5" PointX="3" PointY="6.875" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.VendorInvoice" Width="1.5" PointX="9.75" PointY="5.75" />
-        <EntityTypeShape EntityType="UtilityManagementDBModel.VndorInvoiceDetail" Width="1.5" PointX="9.75" PointY="9.75" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_Customer" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.JobStatus" Width="1.5" PointX="0.75" PointY="2.125" />
         <EntityTypeShape EntityType="UtilityManagementDBModel.ServiceType" Width="1.5" PointX="0.75" PointY="5" />
@@ -26,6 +22,14 @@
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_JobStatus" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_ServiceType1" />
         <AssociationConnector Association="UtilityManagementDBModel.FK_Job_Vendor" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerInvoice" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.CustomerInvoiceDetail" Width="1.5" PointX="3.375" PointY="12.125" />
+        <AssociationConnector Association="UtilityManagementDBModel.FK_CustomerInvoice_Customer" />
+        <AssociationConnector Association="UtilityManagementDBModel.FK_CustomerInvoice_Job" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.VendorInvoice" Width="1.5" PointX="10.5" PointY="4.875" />
+        <EntityTypeShape EntityType="UtilityManagementDBModel.VndorInvoiceDetail" Width="1.5" PointX="10.375" PointY="8.75" />
+        <AssociationConnector Association="UtilityManagementDBModel.FK_VendorInvoice_Job" />
+        <AssociationConnector Association="UtilityManagementDBModel.FK_VendorInvoice_Vendor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

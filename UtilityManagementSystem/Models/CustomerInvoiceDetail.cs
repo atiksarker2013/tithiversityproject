@@ -15,7 +15,7 @@ namespace UtilityManagementSystem.Models
     public partial class CustomerInvoiceDetail
     {
         public int InvoiceDetailKey { get; set; }
-        public Nullable<int> InvoiceKey { get; set; }
+        public Nullable<System.Guid> InvoiceKey { get; set; }
         public string ItemName { get; set; }
         public Nullable<int> Quantity { get; set; }
         public Nullable<decimal> Rate { get; set; }

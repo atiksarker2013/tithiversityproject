@@ -14,12 +14,15 @@ namespace UtilityManagementSystem.Models
     
     public partial class VendorInvoice
     {
-        public int InvoiceKey { get; set; }
+        public System.Guid InvoiceKey { get; set; }
         public Nullable<int> InvoiceId { get; set; }
         public string WorkPerformed { get; set; }
         public Nullable<int> JobKey { get; set; }
         public Nullable<int> VendorKey { get; set; }
         public Nullable<System.DateTime> InvoiceDate { get; set; }
         public Nullable<bool> IsPaid { get; set; }
+    
+        public virtual Job Job { get; set; }
+        public virtual Vendor Vendor { get; set; }
     }
 }

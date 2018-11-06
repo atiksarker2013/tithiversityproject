@@ -26,7 +26,25 @@ namespace UtilityManagementSystem.Models
                 HttpContext.Current.Session[GlobalClass._MasterSession] = value;
             }
         }
-         
+        static private string _CustomerItem = "CustomerItem";
+        public static List<CustomerItemList> CustomerItem
+        {
+            get
+            {
+                if (HttpContext.Current.Session[GlobalClass._CustomerItem] == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (List<CustomerItemList>)(HttpContext.Current.Session[GlobalClass._CustomerItem]);
+                }
+            }
+            set
+            {
+                HttpContext.Current.Session[GlobalClass._CustomerItem] = value;
+            }
+        }
         static private string _SystemSession = "SystemSession";
         public static bool SystemSession
         {

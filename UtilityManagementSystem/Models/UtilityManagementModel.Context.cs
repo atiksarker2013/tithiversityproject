@@ -26,17 +26,17 @@ namespace UtilityManagementSystem.Models
         }
     
         public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<CustomerInvoice> CustomerInvoice { get; set; }
-        public virtual DbSet<CustomerInvoiceDetail> CustomerInvoiceDetail { get; set; }
         public virtual DbSet<CustomerJobRequest> CustomerJobRequest { get; set; }
         public virtual DbSet<StaffList> StaffList { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<UserStaff> UserStaff { get; set; }
         public virtual DbSet<Vendor> Vendor { get; set; }
-        public virtual DbSet<VendorInvoice> VendorInvoice { get; set; }
-        public virtual DbSet<VndorInvoiceDetail> VndorInvoiceDetail { get; set; }
         public virtual DbSet<JobStatus> JobStatus { get; set; }
         public virtual DbSet<ServiceType> ServiceType { get; set; }
         public virtual DbSet<Job> Job { get; set; }
+        public virtual DbSet<CustomerInvoice> CustomerInvoice { get; set; }
+        public virtual DbSet<CustomerInvoiceDetail> CustomerInvoiceDetail { get; set; }
+        public virtual DbSet<VendorInvoice> VendorInvoice { get; set; }
+        public virtual DbSet<VndorInvoiceDetail> VndorInvoiceDetail { get; set; }
     }
 }

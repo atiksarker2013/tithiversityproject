@@ -18,6 +18,7 @@ namespace UtilityManagementSystem.Models
         public Vendor()
         {
             this.Job = new HashSet<Job>();
+            this.VendorInvoice = new HashSet<VendorInvoice>();
         }
     
         public int Id { get; set; }
@@ -30,5 +31,7 @@ namespace UtilityManagementSystem.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VendorInvoice> VendorInvoice { get; set; }
     }
 }

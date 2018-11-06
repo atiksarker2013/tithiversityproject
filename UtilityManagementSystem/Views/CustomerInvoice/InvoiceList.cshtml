@@ -1,0 +1,70 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.CustomerInvoice>
+
+@{
+    ViewBag.Title = "CustomerInvoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<h2>Invoice List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "CustomerInvoice", new { id= @ViewBag.JoKey },null)
+
+</p>
+
+
+<table class="table" id="printTable">
+    <tr>
+
+        <th>
+            Job Name
+        </th>
+
+        <th>
+            Invoice Date
+        </th>
+        <th>
+           Invoice No
+        </th>
+       
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceID)
+            </td>
+          
+
+
+            <td>
+                @{
+                    if (item.IsPaid == false)
+                    {
+                        @Html.ActionLink("Remove", "Remove", "CustomerInvoice", new { id = item.InvoiceKey }, null)
+                        <label>||</label>
+                        @Html.ActionLink("Edit", "Edit", "CustomerInvoice", new { id = item.InvoiceKey }, null)
+                        <label>||</label>
+                    }
+                }
+                @Html.ActionLink("Details", "Details", "CustomerInvoice", new { id = item.InvoiceKey }, null)
+            </td>
+        </tr>
+    }
+
+</table>
+
+

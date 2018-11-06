@@ -89,12 +89,12 @@
                                 </li>
 
                                 @*<li class="me">
-                                    <a href="@Url.Action("PaymentReceive", "Jobs")"><i class="fa fa-dashboard "></i>Payment Receive</a>
-                                </li>
+                    <a href="@Url.Action("PaymentReceive", "Jobs")"><i class="fa fa-dashboard "></i>Payment Receive</a>
+                </li>
 
-                                <li class="me">
-                                    <a href="@Url.Action("Index", "UtilityReport")"><i class="fa fa-dashboard "></i>Report</a>
-                                </li>*@
+                <li class="me">
+                    <a href="@Url.Action("Index", "UtilityReport")"><i class="fa fa-dashboard "></i>Report</a>
+                </li>*@
 
                             }
                             if (GlobalClass.LoginVendorUser != null)
@@ -116,6 +116,9 @@
 
                                 <li class="me">
                                     <a href="@Url.Action("CustomerRequestIndex", "CustomerJobRequests")"><i class="fa fa-dashboard "></i> Job </a>
+                                </li>
+                                <li class="me">
+                                    <a href="@Url.Action("JobListForInvoice", "CustomerInvoice")"><i class="fa fa-dashboard "></i>Manage Invoice</a>
                                 </li>
 
                             }

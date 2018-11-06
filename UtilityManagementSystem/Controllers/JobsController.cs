@@ -20,7 +20,7 @@ namespace UtilityManagementSystem.Controllers
         public ActionResult Index()
         {
 
-            var job = db.Job.Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.JobStatusId!=9);
+            var job = db.Job.Where(m=>m.JobStatusId!=9 || m.JobStatusId!=8).Include(j => j.CustomerJobRequest).Include(j => j.JobStatus).Include(j => j.Vendor).Where(m=>m.JobStatusId!=9);
             return View(job.ToList());
         }
 
@@ -256,7 +256,7 @@ namespace UtilityManagementSystem.Controllers
             return View(job);
         }
 
-
+        //Get:
         public ActionResult VendorEdit(int? id)
         {
             if (id == null)
@@ -296,12 +296,37 @@ namespace UtilityManagementSystem.Controllers
             ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
             return View(job);
         }
-        //Admin job on Process Edit view
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
+
+        //Admin panel job on Process Edit view...................................
+        // GET: Jobs/Edit/5
         public ActionResult JobProcessEdit(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
             Job job = db.Job.Find(id);
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.CustomerId = new SelectList(db.Customer, "Id", "name", job.CustomerId);
+
+            ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
+            ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
+            ViewBag.VndorId = new SelectList(db.Vendor, "Id", "companyName", job.VndorId);
+            
+
+            ViewBag.ServiceDescription = new SelectList(db.ServiceType, "Id", "ServiceName", job.ServiceDescription);
+            return View(job);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult JobProcessEdit(Job job)
+        {
+          
             if (ModelState.IsValid)
             {
                 db.Entry(job).State = EntityState.Modified;
@@ -309,9 +334,10 @@ namespace UtilityManagementSystem.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CustomerId = new SelectList(db.Customer,"Id","name",job.CustomerId);
             ViewBag.JobRequestId = new SelectList(db.CustomerJobRequest, "Id", "JobName", job.JobRequestId);
             ViewBag.JobStatusId = new SelectList(db.JobStatus, "Id", "Name", job.JobStatusId);
-            ViewBag.VendorId = new SelectList(db.Vendor, "Id", "CompanyName", job.VndorId);
+            ViewBag.VndorId = new SelectList(db.Vendor, "Id", "companyName", job.VndorId);
             return View(job);
         }
 
@@ -360,6 +386,14 @@ namespace UtilityManagementSystem.Controllers
             db.Job.Remove(job);
             db.SaveChanges();
             return RedirectToAction("CompletedJob");
+
+        }
+        public ActionResult DirectDelete(int id)
+        {
+          Job job = db.Job.Find(id);
+            job.JobStatusId = 9;
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
 

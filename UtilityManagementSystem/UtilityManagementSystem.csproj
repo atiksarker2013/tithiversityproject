@@ -152,6 +152,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerInvoiceController.cs" />
     <Compile Include="Controllers\CustomerJobRequestsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Models\CustomerInvoiceDetail.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomerItemList.cs" />
     <Compile Include="Models\CustomerJobRequest.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -604,6 +606,11 @@
     <Content Include="Views\CustomerJobRequests\CDetails.cshtml" />
     <Content Include="Views\Jobs\CDetails.cshtml" />
     <Content Include="Views\Jobs\JobProcessEdit.cshtml" />
+    <Content Include="Views\CustomerInvoice\JobListForInvoice.cshtml" />
+    <Content Include="Views\CustomerInvoice\InvoiceList.cshtml" />
+    <Content Include="Views\CustomerInvoice\Create.cshtml" />
+    <Content Include="Views\CustomerInvoice\Details.cshtml" />
+    <Content Include="Views\CustomerInvoice\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
