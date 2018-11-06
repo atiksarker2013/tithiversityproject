@@ -10,10 +10,8 @@ namespace UtilityManagementSystem.Controllers
     {
         // GET: VendorInvoice
         private UtilityManagementDBEntities db = new UtilityManagementDBEntities();
-        public ActionResult Index()
-        {
-            return View();
-        }
+        
+        
         public ActionResult JobListForInvoice()
         {
             var VendorJobRequest = db.Job.Where(m => m.VndorId == GlobalClass.LoginVendorUser.Id).OrderByDescending(m => m.EntryDate);
@@ -45,4 +43,68 @@ namespace UtilityManagementSystem.Controllers
 
 
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(VendorInvoice model, string add, string save, string delete, string ItemName, int? Quantity, decimal? Rate)
+        {
+            if (!string.IsNullOrEmpty(delete))
+            {
+                foreach (var chk in GlobalClass.VendorItem)
+                {
+                    if (chk.ItemName == delete)
+                    {
+                        GlobalClass.VendorItem.Remove(chk);
+                        break;
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(add))
+            {
+                if (!string.IsNullOrEmpty(ItemName) && Quantity != null && Rate != null)
+                {
+                    VendorItemList c = new VendorItemList();
+                    c.ItemName = ItemName;
+                    c.Quantity = Quantity;
+                    c.Rate = Rate;
+                    GlobalClass.VendorItem.Add(c);
+                }
+                else
+                {
+                    ViewBag.message = "Please enter the Line items correctly";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(save))
+            {
+                model.InvoiceKey = Guid.NewGuid();
+                ViewBag.message = "";
+                model.IsPaid = false;
+                db.VendorInvoice.Add(model);
+                db.SaveChanges();
+                if (GlobalClass.VendorItem.Count() > 0)
+                {
+
+                    foreach (var item in GlobalClass.VendorItem)
+                    {
+                        UtilityManagementDBEntities bc = new UtilityManagementDBEntities();
+                        VndorInvoiceDetail obj = new VndorInvoiceDetail();
+                        obj.InvoiceKey = model.InvoiceKey;
+                        obj.ItemName = item.ItemName;
+                        obj.Rate = item.Rate;
+                        obj.Quantity = item.Quantity;
+                        bc.VndorInvoiceDetail.Add(obj);
+                        bc.SaveChanges();
+                        bc.Dispose();
+                    }
+                }
+                GlobalClass.VendorItem = new List<VendorItemList>();
+                return RedirectToAction("InvoiceList", new { id = model.JobKey });
+            }
+
+
+            return View(model);
+
+        }
     }
+   }

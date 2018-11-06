@@ -617,6 +617,7 @@
     <Content Include="Views\VendorInvoice\JobListForInvoice.cshtml" />
     <Content Include="Views\VendorInvoice\InvoiceList.cshtml" />
     <Content Include="Views\VendorInvoice\Details.cshtml" />
+    <Content Include="Views\VendorInvoice\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
