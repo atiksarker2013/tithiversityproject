@@ -1,4 +1,4 @@
-﻿@model UtilityManagementSystem.Models.CustomerInvoice
+﻿@model UtilityManagementSystem.Models.VendorInvoice
 @using UtilityManagementSystem.Models;
 @{
     ViewBag.Title = "Create";
@@ -37,7 +37,7 @@
     @Html.HiddenFor(m => m.JobKey)
     <div class="form-horizontal">
 
-        <h4>Customer Invoice</h4>
+        <h4>Vendor Invoice</h4>
         <h5>@ViewBag.message</h5>
         <hr />
 
@@ -45,10 +45,10 @@
             <div class="col-md-6">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(model => model.InvoiceID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.LabelFor(model => model.InvoiceId, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.InvoiceID, new { @class = "form-control", @required = "required", @onkeypress = "return isNumberKey(event)" })
-                        @Html.ValidationMessageFor(model => model.InvoiceID, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.InvoiceId, new { @class = "form-control", @required = "required", @onkeypress = "return isNumberKey(event)" })
+                        @Html.ValidationMessageFor(model => model.InvoiceId, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                 <tr><th>Item Name</th><th>Rate</th><th>Quanityt</th><th></th></tr>
                 @{
                     UtilityManagementDBEntities db = new UtilityManagementDBEntities();
-                    var itemlist = from x in db.CustomerInvoiceDetail where x.InvoiceKey == Model.InvoiceKey select x;
+                    var itemlist = from x in db.VndorInvoiceDetail where x.InvoiceKey == Model.InvoiceKey select x;
                     itemlist = itemlist.OrderBy(m => m.ItemName);
                     foreach (var Item in itemlist)
                     {
@@ -132,5 +132,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "InvoiceList", "CustomerInvoice", new { id = Model.JobKey }, null)
+    @Html.ActionLink("Back to List", "InvoiceList", "VendorInvoice", new { id = Model.JobKey }, null)
 </div>

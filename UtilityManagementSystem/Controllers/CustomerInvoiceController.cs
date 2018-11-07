@@ -177,18 +177,18 @@ namespace UtilityManagementSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
          
-            VendorInvoice inv = db.VendorInvoice.Find(id);
+            CustomerInvoice inv = db.CustomerInvoice.Find(id);
             int? JobKey = inv.JobKey;
             if (inv == null)
             {
                 return HttpNotFound();
             }
-            var temp = from x in db.VndorInvoiceDetail where x.InvoiceKey == inv.InvoiceKey select x;
+            var temp = from x in db.CustomerInvoiceDetail where x.InvoiceKey == inv.InvoiceKey select x;
             if (temp.Count() > 0)
             {
-                db.VndorInvoiceDetail.RemoveRange(temp);
+                db.CustomerInvoiceDetail.RemoveRange(temp);
             }
-            db.VendorInvoice.Remove(inv);
+            db.CustomerInvoice.Remove(inv);
             db.SaveChanges();
             return RedirectToAction("InvoiceList", new { id = JobKey });
         }

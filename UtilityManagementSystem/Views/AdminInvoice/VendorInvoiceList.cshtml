@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.VendorInvoice>
+
+@{
+    ViewBag.Title = "VendorInvoiceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All Vendor InvoiceList</h2>
+
+<table class="table" id="printTable">
+    <tr>
+
+        <th>
+             Vendor Name
+        </th>
+        <th>
+            Vendor Phone Number
+        </th>
+        
+        <th>
+            Job Name
+        </th>
+
+        <th>
+            Invoice No
+        </th>
+        <th>
+            Invoice Date
+        </th>
+      
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendor.companyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendor.Mobile)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Job.JobName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceId)
+        </td>
+
+        <td>
+
+            @Html.ActionLink("Details", "Details", "AdminInvoice", new { id = item.InvoiceKey }, null)
+        </td>
+    </tr>
+    }
+
+</table>
