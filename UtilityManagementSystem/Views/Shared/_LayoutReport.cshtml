@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - RCS</title>
+
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+</head>
+
+@using UtilityManagementSystem.Models
+
+
+<body>
+    <div id="wrapper">
+       
+       
+        <!-- /. SIDEBAR MENU (navbar-side) -->
+        <div id="page-wrapper" class="page-wrapper-cls">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="page-head-line">@RenderSection("PageHeader", required: false)</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @RenderBody()
+                        @RenderSection("scripts", required: false)
+                    </div>
+                </div>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <footer>
+        @*<img src="~/Content/ss_logo_small.png" height="70px" />*@
+        Developed by Husna Afrin
+    </footer>
+
+
+
+</body>
+</html>

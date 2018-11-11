@@ -163,7 +163,6 @@
     <Compile Include="Controllers\ServiceTypesController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
-    <Compile Include="Controllers\UtilityReportController.cs" />
     <Compile Include="Controllers\VendorInvoiceController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -389,6 +388,26 @@
     <Content Include="Content\themes\smoothness\jquery-ui-timepicker-addon.css" />
     <Content Include="Content\themes\smoothness\jquery-ui.css" />
     <Content Include="Content\themes\smoothness\jquery.datetimepicker.css" />
+    <Content Include="css\ac.jpg" />
+    <Content Include="css\alogo.jpg" />
+    <Content Include="css\Cleaner.jpg" />
+    <Content Include="css\cottage.png" />
+    <Content Include="css\email1.png" />
+    <Content Include="css\furniture.JPG" />
+    <Content Include="css\laundry2.jpg" />
+    <Content Include="css\linked.png" />
+    <Content Include="css\location.jpg" />
+    <Content Include="css\mail.html" />
+    <Content Include="css\makeup.jpg" />
+    <Content Include="css\Moving.jpg" />
+    <Content Include="css\mystyle.css.txt" />
+    <Content Include="css\project.html" />
+    <Content Include="css\slide1.jpg" />
+    <Content Include="css\slide2.jpg" />
+    <Content Include="css\slide4.jpg" />
+    <Content Include="css\tree.png" />
+    <Content Include="css\twitter.png" />
+    <Content Include="css\world4.png" />
     <Content Include="DataBase Script\1.sql" />
     <Content Include="DataBase Script\2.sql" />
     <Content Include="DataBase Script\3.sql" />
@@ -538,6 +557,8 @@
     <Content Include="Scripts\printThis.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\shape\exporting.js" />
+    <Content Include="Scripts\shape\highcharts.js" />
     <Content Include="SQL SCRIPT\11-7-2018.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -626,6 +647,9 @@
     <Content Include="Views\AdminInvoice\Details.cshtml" />
     <Content Include="Views\CommonReports\Index.cshtml" />
     <Content Include="Views\CommonReports\CustomerService.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Home\Signup.cshtml" />
+    <Content Include="Views\Shared\_LayoutReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

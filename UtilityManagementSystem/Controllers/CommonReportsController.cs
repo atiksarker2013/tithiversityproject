@@ -49,5 +49,10 @@ namespace UtilityManagementSystem.Controllers
             }
             return View(obj.ToList());
         }
+        //shape code..................
+        public ActionResult Shape1()
+        {
+            return View();
+        }
     }
 }
