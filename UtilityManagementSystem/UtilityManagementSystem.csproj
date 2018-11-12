@@ -190,6 +190,7 @@
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\JobViewClass.cs" />
+    <Compile Include="Models\Ratio.cs" />
     <Compile Include="Models\ServiceType.cs">
       <DependentUpon>UtilityManagementModel.tt</DependentUpon>
     </Compile>
@@ -650,6 +651,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Home\Signup.cshtml" />
     <Content Include="Views\Shared\_LayoutReport.cshtml" />
+    <Content Include="Views\CommonReports\Shape1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

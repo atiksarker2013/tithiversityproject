@@ -54,5 +54,37 @@ namespace UtilityManagementSystem.Controllers
         {
             return View();
         }
+        public ActionResult GetData()
+        {
+            
+            int appliance = db.CustomerJobRequest.Where(x => x.ServiceTypeId== 1).Count();
+            int shifting =db.CustomerJobRequest.Where(x => x.ServiceTypeId ==2 ).Count();
+            int gadget = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 3).Count();
+          
+            int business = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 4).Count();
+            int laundry= db.CustomerJobRequest.Where(x => x.ServiceTypeId == 5).Count();
+            int beauty = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 6).Count();
+            int carwash = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 7).Count();
+            int cleaning = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 8).Count();
+            int pest = db.CustomerJobRequest.Where(x => x.ServiceTypeId == 9).Count();
+            int Electrica= db.CustomerJobRequest.Where(x => x.ServiceTypeId == 10).Count();
+            
+            Ratio obj = new Ratio();
+            
+            obj.appliance = appliance;
+            obj.shifting = shifting;
+            obj.gadget = gadget;
+            obj.business = business;
+            obj.laundry = laundry;
+            obj.beauty = beauty;
+            obj.carwash = carwash;
+            obj.cleaning = cleaning;
+            obj.pest = pest;
+            obj.Electrica = Electrica ;
+            
+            return Json(obj, JsonRequestBehavior.AllowGet);
+
+        }
+       
     }
 }
