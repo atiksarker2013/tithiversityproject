@@ -31,7 +31,7 @@
 
         <!--<div class="header" style="position:fixed";>  -->
         <div class="panel-heading">
-           
+
             <img src="~/css/alogo.jpg" alt="Cannot show">
             <div class="pull-right">
                 <a href="@Url.Action("Logout", "UserHome")" target="_blank" class="btn btn-info btn-lg">
@@ -40,7 +40,7 @@
                 <a href="@Url.Action("Signup", "Home")" target="_blank" class="btn btn-info btn-lg">
                     Signup
                 </a>
-                <a href="~/css/mail.html" class="btn btn-info btn-lg">
+                <a href="~/css/mail.html" target="_blank" class="btn btn-info btn-lg">
                     <span class="glyphicon glyphicon-map-marker"></span> Location
                 </a>
 
@@ -53,43 +53,45 @@
         <div class="panel body" ;>
             <nav class="navbar navbar-inverse" data-spy="affix" data-offset-top="197" style="background-color:#20A7C2 ;">
                 <ul class="nav navbar-nav">
-                    <button type="button" class="btn btn-info btn-lg">Home</button>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Appliance Repair</button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal1" role="dialog">
-                        <div class="modal-dialog">
+                    <li>
+                     
+                           <button type="button" class="btn btn-info btn-lg">  Home </button> </li>
+                           <li> <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">Appliance Repair</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal1" role="dialog">
+                                <div class="modal-dialog">
 
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Appliance Category</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p>AC Service & Repair</p>
-                                    <p>TV (LCD/LED) servicing</p>
-                                    <p>Refrigerator Servicing</p>
-                                    <p>Washing Machine Repair</p>
-                                    <p>Microwave Oven Repair</p>
-                                    <p>IPS Service</p>
-                                    <p>Water Purifier Servicing</p>
-                                    <p>Gas Stove/Burner Repair</p>
-                                    <p>Trademill Repair & Installation</p>
-                                    <p>Electric Geyser Services</p>
-                                    <p>Generator Services</p>
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Appliance Category</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>AC Service & Repair</p>
+                                            <p>TV (LCD/LED) servicing</p>
+                                            <p>Refrigerator Servicing</p>
+                                            <p>Washing Machine Repair</p>
+                                            <p>Microwave Oven Repair</p>
+                                            <p>IPS Service</p>
+                                            <p>Water Purifier Servicing</p>
+                                            <p>Gas Stove/Burner Repair</p>
+                                            <p>Trademill Repair & Installation</p>
+                                            <p>Electric Geyser Services</p>
+                                            <p>Generator Services</p>
 
 
 
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Shifting</button>
+                    </li>
+                  <li>  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Shifting</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal" role="dialog">
@@ -115,8 +117,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Gadget Repair</button>
+                    </div></li>
+                 <li>   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Gadget Repair</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal2" role="dialog">
@@ -143,8 +145,8 @@
 
                         </div>
                     </div>
-
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Business Support</button>
+                    </li>
+                   <li> <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Business Support</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal3" role="dialog">
@@ -171,8 +173,8 @@
 
                         </div>
                     </div>
-
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal4">Laundry Home Service</button>
+                    </li>
+                   <li> <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal4">Laundry Home Service</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal4" role="dialog">
@@ -195,8 +197,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal5">Beauty Service</button>
+                    </div></li>
+                   <li> <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal5">Beauty Service</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal5" role="dialog">
@@ -220,8 +222,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal6">Car Wash and Repair</button>
+                    </div></li>
+                  <li>  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal6">Car Wash and Repair</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal6" role="dialog">
@@ -248,8 +250,8 @@
                             </div>
 
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal7">Cleaning and pest Control</button>
+                    </div></li>
+                   <li> <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal7">Cleaning and pest Control</button>
 
                     <!-- Modal -->
                     <div class="modal fade" id="myModal7" role="dialog">
@@ -279,7 +281,7 @@
 
                         </div>
                     </div>
-
+                    </li>
                 </ul>
 
             </nav>
