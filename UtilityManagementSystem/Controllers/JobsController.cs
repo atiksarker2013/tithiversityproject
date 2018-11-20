@@ -1,9 +1,12 @@
-﻿using System;
+﻿using SendGrid;
+using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using UtilityManagementSystem.Models;
@@ -51,12 +54,49 @@ namespace UtilityManagementSystem.Controllers
             model.VendorStartingDate = job.VendorStartingDate;
             model.VendorCompletionDate = job.VendorCompletionDate;
             model.JobCompletedDate = job.JobCompletedDate;
+
+
             if (job == null)
             {
                 return HttpNotFound();
             }
 
             return View(model);
+        }
+
+        public async Task<ActionResult> InvoiceAgree(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Job job = db.Job.Find(id);
+            JobViewClass model = new JobViewClass();
+            model.JobDescription = job.JobDescription;
+            model.VendorName = job.Vendor.name;
+            model.CompanyName = job.Vendor.companyName;
+            model.JobRequestId = job.JobRequestId;
+            model.JobStatusId = job.JobStatus.Name;
+            model.Remark = job.Remark;
+            model.EntryDate = job.CustomerJobRequest.EntryDate;
+            model.ScheduleDate = job.CustomerJobRequest.ScheduleDate;
+            model.VendorStartingDate = job.VendorStartingDate;
+            model.VendorCompletionDate = job.VendorCompletionDate;
+            model.JobCompletedDate = job.JobCompletedDate;
+            if (job == null)
+            {
+                return HttpNotFound();
+            }
+            var client = new SendGridClient("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");
+            var from = new EmailAddress(GlobalClass.LoginVendorUser.Email,GlobalClass.LoginVendorUser.companyName);
+            var subject = "Vendor accepted work";
+            var to = new EmailAddress("husnaafrin@gmail.com", "Husna");
+            var htmlContentValue ="We will provide service to this customer.I will give invoice after completing the work";
+
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, null, htmlContentValue);
+            var response = await client.SendEmailAsync(msg);
+           
+            return await Task.Run(() => View(model));
         }
         //public ActionResult SendJobDetailsToVendorReport()
         //{

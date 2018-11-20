@@ -1,0 +1,15 @@
+﻿@model UtilityManagementSystem.Models.JobViewClass
+@{
+    ViewBag.Title = "InvoiceAgree";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Agree Email Has Been Send...................</h2>
+
+@Html.DisplayFor(model => model.VendorName) job accept request emailed to admin
+<br/><br/>
+     <p>
+
+         @Html.ActionLink("Back to List", "VIndex")
+     </p>
+

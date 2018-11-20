@@ -84,9 +84,10 @@
             @Html.DisplayFor(modelItem => item.Remark)
         </td>
         <td>
-          
+
             @Html.ActionLink("Details", "vendorDetails", new { id = item.Id }) |
-          
+            @Html.ActionLink("Agree", "InvoiceAgree", new { id = item.Id }) |
+
         </td>
     </tr>
 }
