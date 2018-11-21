@@ -87,7 +87,7 @@ namespace UtilityManagementSystem.Controllers
             {
                 return HttpNotFound();
             }
-            var client = new SendGridClient("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");
+            var client = new SendGridClient("");
             var from = new EmailAddress(GlobalClass.LoginVendorUser.Email,GlobalClass.LoginVendorUser.companyName);
             var subject = "Vendor accepted work";
             var to = new EmailAddress("husnaafrin@gmail.com", "Husna");
