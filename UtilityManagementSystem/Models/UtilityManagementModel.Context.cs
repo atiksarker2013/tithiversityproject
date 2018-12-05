@@ -25,7 +25,6 @@ namespace UtilityManagementSystem.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<CustomerJobRequest> CustomerJobRequest { get; set; }
         public virtual DbSet<StaffList> StaffList { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -38,5 +37,6 @@ namespace UtilityManagementSystem.Models
         public virtual DbSet<CustomerInvoiceDetail> CustomerInvoiceDetail { get; set; }
         public virtual DbSet<VendorInvoice> VendorInvoice { get; set; }
         public virtual DbSet<VndorInvoiceDetail> VndorInvoiceDetail { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
     }
 }

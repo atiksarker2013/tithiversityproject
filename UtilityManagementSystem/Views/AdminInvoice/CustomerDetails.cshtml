@@ -1,13 +1,14 @@
-﻿@model UtilityManagementSystem.Models.VendorInvoice
+﻿@model UtilityManagementSystem.Models.CustomerInvoice
 @using UtilityManagementSystem.Models;
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "CustomerDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>CustomerDetails</h2>
 
-<h4>VendorInvoice</h4>
+
+<h4>CustomerInvoice</h4>
 
 <hr />
 
@@ -16,24 +17,24 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-horizontal">
             <div class="form-group">
-                @Html.LabelFor(model => model.InvoiceId, "Job Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.InvoiceID, "Job Name", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
                     @Html.DisplayFor(model => model.Job.JobName)
 
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.InvoiceId, "Customer Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.InvoiceID, "Customer Name", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
                     @Html.DisplayFor(model => model.Job.Customer.name)
 
                 </div>
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.InvoiceId, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.InvoiceID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
-                    @Html.DisplayFor(model => model.InvoiceId)
-                    @Html.ValidationMessageFor(model => model.InvoiceId, "", new { @class = "text-danger" })
+                    @Html.DisplayFor(model => model.InvoiceID)
+                    @Html.ValidationMessageFor(model => model.InvoiceID, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
@@ -79,7 +80,10 @@
         }
     </table>
 </div>
-
 <div>
-    @Html.ActionLink("Back to List", "VendorInvoiceList", "AdminInvoice", new { id = Model.JobKey }, null)
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.InvoiceKey }) |*@
+
+        @Html.ActionLink("Back to List", "CustomerInvoiceList")
+    </p>
 </div>

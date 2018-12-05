@@ -22,7 +22,7 @@ namespace UtilityManagementSystem.Models
         public Nullable<System.DateTime> InvoiceDate { get; set; }
         public Nullable<bool> IsPaid { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual Job Job { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

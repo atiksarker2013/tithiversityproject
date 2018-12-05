@@ -33,10 +33,10 @@ namespace UtilityManagementSystem.Models
         public Nullable<int> JobStatusId { get; set; }
         public Nullable<bool> IsJobCreated { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual JobStatus JobStatus { get; set; }
         public virtual ServiceType ServiceType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

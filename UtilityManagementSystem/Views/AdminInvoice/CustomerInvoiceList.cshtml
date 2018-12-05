@@ -1,0 +1,62 @@
+﻿@model IEnumerable<UtilityManagementSystem.Models.CustomerInvoice>
+
+@{
+    ViewBag.Title = "CustomerInvoiceList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CustomerInvoiceList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WorkPerformed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPaid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job.JobName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkPerformed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job.JobName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "CustomerDetails", new { id=item.InvoiceKey }) |
+        </td>
+    </tr>
+}
+
+</table>

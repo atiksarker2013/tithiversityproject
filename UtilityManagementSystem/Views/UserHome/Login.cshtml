@@ -4,6 +4,7 @@
 }
 
 @using (Html.BeginForm("Login", "UserHome", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+   
 {
     @Html.AntiForgeryToken()
 
@@ -23,7 +24,7 @@
                     <h3>System User Login</h3>
                     <hr />
                     <div class="form-horizontal">
-
+                        <h3>@ViewBag.mess</h3>
 
                         <div class="form-group">
                             <label class="col-md-2 control-label">Username</label>
@@ -47,10 +48,26 @@
                 </div>
                 <div class="panel-footer">
                     <div class="col-md-offset-7">
-                        <input type="submit" value="Log in" class="btn btn-primary" />
+                        @*<input type="submit" value="Log in" class="btn btn-primary" />*@
+                        <button id="btnsubmit" class="btn btn-primary">Login</button>
+                        <br/><br/>
+                        <h3 style="color:red">@ViewBag.message</h3>
+                        @*<div id="myId" class="alert alert-danger collapse" >
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            <strong>Error</strong>There is a problem in your submission....
+
+                        </div>*@
                     </div>
 
                 </div>
+                @*<script type="text/javascript">
+                    $(document).ready(function () {
+                        $('btnsubmit').click(function () {
+                            $('#myId').show();
+                        });
+
+                    });
+                    </script>*@
                 <div class="panel-footer">
                     @*<footer>
                         <p>&copy; @DateTime.Now.Year - Developed by Husna Afrin </p>

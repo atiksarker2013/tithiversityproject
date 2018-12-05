@@ -36,7 +36,6 @@ namespace UtilityManagementSystem.Models
         public Nullable<System.DateTime> VendorCompletionDate { get; set; }
         public Nullable<System.DateTime> JobCompletedDate { get; set; }
     
-        public virtual Customer Customer { get; set; }
         public virtual CustomerJobRequest CustomerJobRequest { get; set; }
         public virtual JobStatus JobStatus { get; set; }
         public virtual ServiceType ServiceType { get; set; }
@@ -45,5 +44,6 @@ namespace UtilityManagementSystem.Models
         public virtual ICollection<CustomerInvoice> CustomerInvoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VendorInvoice> VendorInvoice { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }

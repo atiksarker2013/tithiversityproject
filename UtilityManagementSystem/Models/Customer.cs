@@ -11,30 +11,36 @@ namespace UtilityManagementSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
+            this.CustomerInvoice = new HashSet<CustomerInvoice>();
             this.CustomerJobRequest = new HashSet<CustomerJobRequest>();
             this.Job = new HashSet<Job>();
-            this.CustomerInvoice = new HashSet<CustomerInvoice>();
         }
-    
+
         public int Id { get; set; }
+        [RegularExpression("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Name Is Not Valid")]
         public string name { get; set; }
-        public Nullable<int> Mobile { get; set; }
+        [StringLength(11, MinimumLength = 11, ErrorMessage = "Phone # has to be 11 digit")]
+        public string Mobile { get; set; }
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
+        [RegularExpression("", ErrorMessage = "Address is not valid")]
         public string Address { get; set; }
         public Nullable<bool> IsEnabled { get; set; }
+        [RegularExpression("", ErrorMessage = "Company name is not valid")]
         public string companyName { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerInvoice> CustomerInvoice { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerJobRequest> CustomerJobRequest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerInvoice> CustomerInvoice { get; set; }
     }
 }

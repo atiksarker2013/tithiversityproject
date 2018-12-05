@@ -23,6 +23,7 @@ namespace UtilityManagementSystem.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.mess = "";
             return View();
         }
 
@@ -32,20 +33,38 @@ namespace UtilityManagementSystem.Controllers
 
             try
             {
-                int mobilePassword = 0;
+               // int mobilePassword = 0;
+                //mobilePassword = Convert.ToInt32(password);
                 StaffList obj = db.StaffList.SingleOrDefault(m => m.Username == username && m.Password == password && m.IsDelete == false && m.IsUser == true);
                 if (obj == null)
                 {
-                    mobilePassword = Convert.ToInt32(password);
-                    Customer customerObj = db.Customer.SingleOrDefault(m => m.Email == username && m.Mobile == mobilePassword);
+                    ViewBag.mess = "Incorrect Username/  Password.";
+                }
+                else
+                {
+                    GlobalClass.LoginUser = obj;
+                    return RedirectToAction("Index", "Jobs");
+                }
+               
+                    Customer customerObj = db.Customer.SingleOrDefault(m => m.Email == username && m.Mobile == password);
+
                     if (customerObj ==null)
                     {
-                        Vendor vendorObj = db.Vendor.SingleOrDefault(m => m.Email == username && m.Mobile == password);
+                    ViewBag.mess = "Incorrect Username/  Password.";
+                }
+                else
+                {
+                    GlobalClass.LoginCustomerUser = customerObj;
+                    GlobalClass.SystemSession = true;
+                    return RedirectToAction("CustomerJobRequest", "CustomerJobRequests");
+
+                }
+                Vendor vendorObj = db.Vendor.SingleOrDefault(m => m.Email == username && m.Mobile == password);
                         if (vendorObj ==null)
                         {
-                            Exception e = new Exception("Incorrect user access.");
-                            return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
-                        }
+                    ViewBag.mess = "Incorrect Username/  Password.";
+
+                }
                         else
                         {
                             GlobalClass.LoginVendorUser = vendorObj;
@@ -53,23 +72,10 @@ namespace UtilityManagementSystem.Controllers
                             return RedirectToAction("VIndex", "Jobs");
 
                         }
-                    }
-                    else
-                    {
-                        GlobalClass.LoginCustomerUser = customerObj;
-                        GlobalClass.SystemSession = true;
-                        return RedirectToAction("CustomerJobRequest", "CustomerJobRequests");
-
-                    }
                    
-                }
-                else
-                {
-                    GlobalClass.LoginUser = obj;
-                    return RedirectToAction("Index", "Jobs");
-                }
+                
 
-              //  return View("Error", new HandleErrorInfo(e, "UserHome", "Login"));
+              return View();
 
             }
             catch (DivideByZeroException e)

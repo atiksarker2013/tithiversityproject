@@ -29,5 +29,21 @@ namespace UtilityManagementSystem.Controllers
             return View(model);
 
         }
+
+        //customer invoice to admin
+        public ActionResult CustomerInvoiceList()
+        {
+
+            var CustomerJobRequest = db.CustomerInvoice.OrderByDescending(m => m.InvoiceDate);
+            return View(CustomerJobRequest.ToList());
+
+        }
+        public ActionResult CustomerDetails(Guid id)
+        {
+            CustomerInvoice model = db.CustomerInvoice.Find(id);
+
+            return View(model);
+
+        }
     }
 }

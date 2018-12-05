@@ -9,6 +9,16 @@
     $(function () { // will trigger when the document is ready
        $('.datepicker').datepicker(); //Initialise any date pickers
     });
+
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
 </script>
 
 <h2>Create</h2>
@@ -33,7 +43,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Mobile, "Mobile", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control", @maxlength = "11", @onkeypress = "return isNumberKey(event)" } })
             @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })
         </div>
     </div>

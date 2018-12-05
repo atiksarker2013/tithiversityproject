@@ -41,7 +41,7 @@ namespace UtilityManagementSystem.Controllers
                 {
                     Customer obj = new Customer();
                     obj.name = vendor.name;
-                    obj.Mobile = Convert.ToInt32(vendor.Mobile);
+                    obj.Mobile = vendor.Mobile;
                     obj.Email = vendor.Email;
                     obj.Address = vendor.Address;
                     obj.companyName = vendor.companyName;
